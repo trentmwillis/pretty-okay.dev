@@ -72,6 +72,7 @@ li {
  */
 h1, h2, h3, h4, h5, h6 {
   font-weight: $base-font-weight;
+  line-height: 1.5;
 }
 
 /**
@@ -91,15 +92,42 @@ a {
  * Blockquotes
  */
 blockquote {
-  color: $color-grey;
-  border-left: 4px solid $color-grey-light;
-  padding-left: $spacing-unit / 2;
-  font-size: 18px;
-  letter-spacing: -1px;
+  color: $color-black;
+  line-height: 1.5;
   font-style: italic;
+  text-align: center;
+  position: relative;
+  padding: 1rem 0;
+
+  cite {
+    display: block;
+    font-style: normal;
+    color: $color-grey;
+  }
 
   > :last-child {
     margin-bottom: 0;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+
+    background: #7b4397; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #7b4397 , #dc2430); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #7b4397 , #dc2430); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+
+  &:before {
+    top: 0;
+  }
+
+  &:after {
+    bottom: 0;
   }
 }
 
@@ -140,13 +168,6 @@ pre {
   padding-right: $spacing-unit;
   padding-left: $spacing-unit;
   @extend %clearfix;
-
-  @include media-query($on-laptop) {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit}));
-    padding-right: $spacing-unit / 2;
-    padding-left: $spacing-unit / 2;
-  }
 }
 
 /**
