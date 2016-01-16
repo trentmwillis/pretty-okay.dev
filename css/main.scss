@@ -9,7 +9,7 @@ $base-font-size:   1.125rem;
 $base-font-weight: 400;
 $base-line-height: 2;
 
-$spacing-unit:     1rem;
+$mobile-font-size: 1rem;
 
 $color-black:      #333;
 $color-white:      #fdfdfd;
@@ -26,6 +26,14 @@ $device-mobile:    600px;
 $device-tablet:    800px;
 
 $z-title:          10;
+
+$x-small:          0.75em;
+$small:            1em;
+$medium:           1.333em;
+$large:            1.777em;
+$x-large:          2.369em;
+
+$spacing-unit:     $medium;
 
 @mixin media-query($device) {
   @media screen and (max-width: $device) {

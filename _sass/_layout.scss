@@ -28,17 +28,20 @@
 
 .banner {
   position: relative;
-  padding: ($spacing-unit * 4) 0 ($spacing-unit * 2);
+  padding: ($spacing-unit * 2.5) 0 ($spacing-unit * 1.5);
+  line-height: 1.5;
   text-align: center;
-  color: $color-white;
 
   @include gradient(to left);
 }
 
 .banner-title {
-  font-size: 2rem;
+  color: $color-white;
+  -webkit-text-fill-color: initial;
+  font-size: $x-large;
   font-family: $base-font-family;
   font-weight: 300;
+  margin: 0;
 }
 
 /**
@@ -47,7 +50,7 @@
 
 .site-footer {
   position: relative;
-  padding: ($spacing-unit * 2) 0;
+  padding: $spacing-unit 0;
   margin-top: $spacing-unit;
 
   &:before {
@@ -87,12 +90,12 @@
  */
 
 .post-list {
-  margin-left: 0;
+  margin: 0;
   list-style: none;
 }
 
 .post-item {
-  padding: $spacing-unit 0 (1.5 * $spacing-unit);
+  padding: $spacing-unit 0;
   border-bottom: 1px solid $color-grey-light;
   text-align: center;
 
@@ -103,10 +106,15 @@
 }
 
 .post-title {
+  position: relative;
   line-height: 1.2;
   margin: 0;
   font-size: 2rem;
   font-weight: 300;
+
+  a {
+    -webkit-text-fill-color: initial;
+  }
 }
 
 .article-meta,
@@ -123,4 +131,10 @@
 .article-header {
   margin: $spacing-unit 0;
   text-align: center;
+}
+
+.article-content {
+  > :last-child {
+    margin-bottom: 0;
+  }
 }
