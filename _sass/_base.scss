@@ -1,9 +1,10 @@
 /**
  * Reset some basic elements
  */
+
 body, h1, h2, h3, h4, h5, h6,
 p, blockquote, pre, hr,
-dl, dd, ol, ul, figure {
+dl, dd, ol, ul, figure, td {
   margin: 0;
   padding: 0;
 }
@@ -11,6 +12,7 @@ dl, dd, ol, ul, figure {
 /**
  * Basic styling
  */
+
 body {
   font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
   color: $color-black;
@@ -27,6 +29,7 @@ body {
 /**
  * Set `margin-bottom` to maintain vertical rhythm
  */
+
 h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
 ul, ol, dl, figure,
@@ -37,6 +40,7 @@ ul, ol, dl, figure,
 /**
  * Images
  */
+
 img {
   max-width: 100%;
   vertical-align: middle;
@@ -45,6 +49,7 @@ img {
 /**
  * Figures
  */
+
 figure > img {
   display: block;
 }
@@ -56,6 +61,7 @@ figcaption {
 /**
  * Lists
  */
+
 ul, ol {
   margin-left: $spacing-unit;
 }
@@ -70,14 +76,17 @@ li {
 /**
  * Headings
  */
+
 h1, h2, h3, h4, h5, h6 {
-  font-weight: $base-font-weight;
+  font-family: "Lato", $base-font-family;
+  font-weight: 300;
   line-height: 1.5;
 }
 
 /**
  * Links
  */
+
 a {
   color: $color-brand;
   text-decoration: none;
@@ -91,6 +100,7 @@ a {
 /**
  * Blockquotes
  */
+
 blockquote {
   color: $color-black;
   line-height: 1.5;
@@ -117,9 +127,7 @@ blockquote {
     right: 0;
     height: 1px;
 
-    background: #7b4397; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #7b4397 , #dc2430); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #7b4397 , #dc2430); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    @include gradient(-45deg);
   }
 
   &:before {
@@ -134,12 +142,17 @@ blockquote {
 /**
  * Code formatting
  */
+
 pre,
 code {
-  font-size: 15px;
   border: 1px solid $color-grey-light;
-  border-radius: 3px;
-  background-color: #eef;
+  border-radius: 2px;
+  line-height: 1.5;
+
+  pre {
+    border: none;
+    margin-bottom: 0;
+  }
 }
 
 code {
@@ -147,7 +160,6 @@ code {
 }
 
 pre {
-  padding: 8px 12px;
   overflow-x: auto;
 
   > code {
@@ -160,6 +172,7 @@ pre {
 /**
  * Wrapper
  */
+
 .wrapper {
   max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
   max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
@@ -167,12 +180,14 @@ pre {
   margin-left: auto;
   padding-right: $spacing-unit;
   padding-left: $spacing-unit;
+
   @extend %clearfix;
 }
 
 /**
  * Clearfix
  */
+
 %clearfix {
   &:after {
     content: "";
@@ -184,6 +199,7 @@ pre {
 /**
  * Icons
  */
+
 .icon {
   > svg {
     display: inline-block;
@@ -194,10 +210,10 @@ pre {
     path {
       fill: $color-brand;
       transition: fill 0.2s;
+    }
 
-      &:hover {
-        fill: darken($color-brand, 15%);
-      }
+    &:hover path {
+      fill: darken($color-brand, 15%)
     }
   }
 }
