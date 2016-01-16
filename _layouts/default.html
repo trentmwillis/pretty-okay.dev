@@ -5,7 +5,8 @@
   <body>
     {% include header.html %}
 
-    <div class="banner">
+
+    <div class="banner"{% if page.image %} style="background-image:url('{{ page.image | prepend: '/assets/images/' }}')"{% endif %}>
       <div class="wrapper">
         <h2 class="banner-title" itemprop="name headline">{{page.title}}</h2>
       </div>

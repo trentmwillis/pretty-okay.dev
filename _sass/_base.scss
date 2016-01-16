@@ -88,6 +88,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
   margin: $spacing-unit 0;
   color: $color-brand;
+  line-height: 1.5;
 
   background: -webkit-linear-gradient(left, $color-brand, $color-accent);
   -webkit-background-clip: text;

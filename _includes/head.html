@@ -7,7 +7,7 @@
 
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
-  <meta property="og:image" content="{{ "/assets/site-logo.png" | prepend: site.baseurl | prepend: site.url }}">
+  <meta property="og:image" content="{%if page.image %}{{ page.image | prepend: '/assets/images/' | prepend: site.baseurl | prepend: site.url }}{% else %}{{ "/assets/site-logo.png" | prepend: site.baseurl | prepend: site.url }}{% endif %}">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic|Lato:300,300italic">
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">

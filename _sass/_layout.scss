@@ -33,6 +33,24 @@
   text-align: center;
 
   @include gradient(to left);
+
+  background-size: cover;
+  background-position: top 40% left 50%;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include gradient(to left);
+    opacity: 0.85;
+  }
+
+  .wrapper {
+    position: relative;
+  }
 }
 
 .banner-title {

@@ -9,7 +9,7 @@ title: "Stuff I've Written"
       <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</p>
 
       <h2 class="post-title">
-        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        <a href="{{ post.id | prepend: site.baseurl }}">{{ post.title }}</a>
       </h2>
     </li>
   {% endfor %}
