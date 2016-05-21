@@ -10,7 +10,8 @@ title: Pretty Okay
 email: trent@pretty-okay.com
 description: I make internet things.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://pretty-okay.com" # the base hostname & protocol for your site
+url: "https://pretty-okay.com" # the base hostname & protocol for your site
+enforce_ssl: "pretty-okay.com"
 twitter_username: trentmwillis
 github_username: trentmwillis
 

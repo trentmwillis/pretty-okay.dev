@@ -1,5 +1,16 @@
 <head>
   <meta charset="utf-8">
+
+  {% if site.enforce_ssl %}
+  <script>
+    (function enforceSSL(location) {
+      if (location.hostname === '{{ site.enforce_ssl }}' && location.protocol !== 'https:') {
+        location.protocol = 'https:';
+      }
+    }(window.location));
+  </script>
+  {% endif %}
+
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -12,7 +23,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic|Lato:300,300italic">
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
 
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 </head>
