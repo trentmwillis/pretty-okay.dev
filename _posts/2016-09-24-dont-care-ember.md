@@ -6,6 +6,8 @@ date:   2016-09-24
 image:  "2016-09-24-dont-care-ember.jpg"
 ---
 
+_I want to preface this post by saying it is not directed at anyone, but is rather a reflection on some interactions I have had both at work and in the open source community in past months._
+
 In my current role at [LinkedIn](https://www.linkedin.com/in/trentmwillis), I interact with a lot of developers; on an average day, I work with a dozen or more different individuals discussing software engineering in some capacity. So, you can imagine that I encounter a lot of [differing opinions](http://www.techinsider.io/tabs-vs-spaces-from-silicon-valley-2016-5) about how we should be building our web applications.
 
 One of the most contentious, opinion-driven topics in the past year centered on whether we should have taken the plunge in using [Ember.js](http://emberjs.com/) as our framework of choice.
