@@ -6,19 +6,27 @@
   position: absolute;
   height: $spacing-unit * 3;
   width: 100%;
-  text-align: center;
   z-index: $z-title;
 }
 
-.site-title {
+.main-nav {
+  max-width: $content-width;
+  margin: 0 auto;
+  text-align: center;
   font-size: 1rem;
   font-weight: 300;
   line-height: 3;
   letter-spacing: 0.25rem;
   color: rgba($color-white, 0.5);
 
-  &:hover {
-    color: $color-white;
+  &_link {
+    color: inherit;
+    margin: 0.25rem;
+
+    &.active,
+    &:hover {
+      color: $color-white;
+    }
   }
 }
 

@@ -1,3 +1,11 @@
 <header class="site-header">
-  <a class="site-title" href="{{site.baseurl}}/">{{site.title}}</a>
+  <nav class="main-nav">
+    <a class="site-title main-nav_link" href="{{site.baseurl}}/">{{site.title}}</a>
+    |
+    {% for navPage in site.pages %}
+      {% if navPage.nav_title %}
+        <a class="main-nav_link {% if navPage.url == page.url %}active{% endif %}" href="{{navPage.url}}">{{navPage.nav_title}}</a>
+      {% endif %}
+    {% endfor %}
+  </nav>
 </header>
