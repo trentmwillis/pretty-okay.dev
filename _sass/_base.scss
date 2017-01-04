@@ -189,6 +189,22 @@ pre {
 }
 
 /**
+ * Font Styles
+ */
+
+strong {
+  color: $color-accent;
+}
+
+hr {
+  margin-bottom: 1rem;
+  border: none;
+  height: 1px;
+  width: 100%;
+  @include gradient(to left);
+}
+
+/**
  * Wrapper
  */
 
