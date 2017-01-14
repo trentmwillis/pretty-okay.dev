@@ -6,15 +6,17 @@ nav_title: "Writing"
 
 <ul class="post-list">
   {% for post in site.posts %}
-    <li class="post-item">
-      <p class="post-meta">
-        {{ post.date | date: "%b %-d, %Y" }} | <a href="{{ post.id | prepend: site.baseurl }}#disqus_thread" data-disqus-identifier="{{ post.id }}">0 Comments</a>
-      </p>
+    {% unless post.category %}
+      <li class="post-item">
+        <p class="post-meta">
+          {{ post.date | date: "%b %-d, %Y" }} | <a href="{{ post.id | prepend: site.baseurl }}#disqus_thread" data-disqus-identifier="{{ post.id }}">0 Comments</a>
+        </p>
 
-      <h2 class="post-title">
-        <a href="{{ post.id | prepend: site.baseurl }}">{{ post.title }}</a>
-      </h2>
-    </li>
+        <h2 class="post-title">
+          <a href="{{ post.id | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+      </li>
+    {% endunless %}
   {% endfor %}
 </ul>
 
