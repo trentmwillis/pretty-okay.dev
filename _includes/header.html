@@ -4,7 +4,7 @@
     |
     {% for navPage in site.pages %}
       {% if navPage.nav_title %}
-        <a class="main-nav_link {% if navPage.url == page.url %}active{% endif %}" href="{{navPage.url}}">{{navPage.nav_title}}</a>
+        <a class="main-nav_link {% if navPage.url == page.url or navPage.category == page.category %}active{% endif %}" href="{{navPage.url | remove: '.html'}}">{{navPage.nav_title}}</a>
       {% endif %}
     {% endfor %}
   </nav>
