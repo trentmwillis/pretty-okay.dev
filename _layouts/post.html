@@ -1,13 +1,13 @@
 ---
 layout: default
 ---
-<article class="article" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="article" itemscope itemtype="https://schema.org/BlogPosting">
   <header class="article-header">
     <p class="article-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.id | date: "%b %-d, %Y" }}</time>
 
       {% if page.author %} |
-        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="author" itemscope itemtype="https://schema.org/Person">
           <span itemprop="name">{{ page.author }}</span>
         </span>
       {% endif %}
