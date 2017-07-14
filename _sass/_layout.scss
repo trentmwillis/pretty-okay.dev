@@ -16,7 +16,7 @@
   font-size: 1rem;
   font-weight: 300;
   line-height: 3;
-  letter-spacing: 0.25rem;
+  letter-spacing: 0.1rem;
   color: rgba($color-white, 0.5);
 
   &_link {
@@ -65,8 +65,6 @@
   color: $color-white;
   -webkit-text-fill-color: initial;
   font-size: $x-large;
-  font-family: $base-font-family;
-  font-weight: 300;
   margin: 0;
 }
 
@@ -150,7 +148,6 @@
   line-height: 1.2;
   margin: 0;
   font-size: 2rem;
-  font-weight: 300;
 
   a {
     -webkit-text-fill-color: initial;
