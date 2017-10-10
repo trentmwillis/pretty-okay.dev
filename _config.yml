@@ -8,7 +8,7 @@
 # Site settings
 title: Pretty Okay
 email: trent@pretty-okay.com
-description: I make internet things.
+description: The blog of Trent Willis, a maker of internet things.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://pretty-okay.com" # the base hostname & protocol for your site
 enforce_ssl: "pretty-okay.com"
