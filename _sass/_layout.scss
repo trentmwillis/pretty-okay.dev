@@ -127,6 +127,14 @@
  * Index / Home
  */
 
+.section-header {
+  margin: $spacing-unit 0 $spacing-unit;
+  text-align: center;
+  border: 1px solid #e8e8e8;
+  border-left: none;
+  border-right: none;
+}
+
 .post-list {
   margin: 0;
   list-style: none;
@@ -140,6 +148,10 @@
   &:last-child {
     border-bottom: none;
     padding-bottom: 0;
+  }
+
+  &.is-small {
+    padding: $spacing-unit / 2 0;
   }
 }
 

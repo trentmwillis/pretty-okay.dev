@@ -5,20 +5,45 @@ nav_title: "Speaking"
 category: "talk"
 ---
 
-<ul class="post-list">
-  {% for post in site.posts %}
-    {% if post.category == 'talk' %}
-      <li class="post-item">
-        <p class="post-meta">
-          {{ post.date | date: "%b %-d, %Y" }} | {{ post.event }}
-        </p>
+<section>
+  <h2 class="section-header">Upcoming Talks</h2>
 
-        <h2 class="post-title">
-          <a href="{{ post.video_url }}" target="_blank" rel="noreferrer noopener">{{ post.title }}</a>
-        </h2>
+  <ul class="post-list">
+    {% for post in site.posts %}
+      {% if post.category == 'talk' and post.upcoming == true %}
+        <li class="post-item is-small">
+          <p class="post-meta">
+            {{ post.date | date: "%b %-d, %Y" }} | {{ post.event }}
+            {% if post.info %}
+              | <a href="{{ post.info }}" target="_blank" rel="noreferrer noopener">
+                Info
+              </a>
+            {% endif %}
+          </p>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</section>
 
-        <p class="post-excerpt">{{ post.description }}</p>
-      </li>
-    {% endif %}
-  {% endfor %}
-</ul>
+<section>
+    <h2 class="section-header">Previous Talks</h2>
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+      {% if post.category == 'talk' and post.upcoming != true %}
+        <li class="post-item">
+          <p class="post-meta">
+            {{ post.date | date: "%b %-d, %Y" }} | {{ post.event }}
+          </p>
+
+          <h2 class="post-title">
+            <a href="{{ post.video_url }}" target="_blank" rel="noreferrer noopener">{{ post.title }}</a>
+          </h2>
+
+          <p class="post-excerpt">{{ post.description }}</p>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</section>
