@@ -231,6 +231,12 @@ hr {
  */
 
 .icon {
+  .article-meta & > svg {
+    vertical-align: initial;
+    top: 2px;
+    position: relative;
+  }
+
   > svg {
     display: inline-block;
     width: 16px;

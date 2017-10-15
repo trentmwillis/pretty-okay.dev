@@ -12,6 +12,16 @@ layout: default
         </span>
       {% endif %}
 
+      |
+
+      {% if site.github_username %}
+        {% include icon-github.html username=site.github_username %}
+      {% endif %}
+
+      {% if site.twitter_username %}
+        {% include icon-twitter.html username=site.twitter_username %}
+      {% endif %}
+
       | <a href="#disqus_thread" data-disqus-identifier="{{ page.id }}">0 Comments</a>
     </p>
   </header>
