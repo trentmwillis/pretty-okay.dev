@@ -16,19 +16,19 @@ That may have been a bit too abstract, so the following is a more concrete expla
 
 First, a quick primer for those unfamiliar with QUnit (or that haven't used it in a while), tests are defined like so:
 
-```js
+{% highlight javascript linenos %}
 QUnit.test('description', function(assert) {
   // Test code goes here
 });
-```
+{% endhighlight %}
 
 Pretty simple. When using QUnit-In-Browser, tests are defined with just a slight difference:
 
-```js
+{% highlight javascript linenos %}
 QUnit.test.inBrowser('description', 'url', function(assert) {
   // Test code to execute in the browser at the specified URL
 });
-```
+{% endhighlight %}
 
 The only difference is that there is an additional argument, to specify the URL of the site you want to visit. The code within the function body will then execute at that URL once it loads.
 
@@ -52,11 +52,11 @@ Additionally, since the tests execute in the context of the browser, you get ful
 
 In fact, if you place a `debugger` statement in your test code, QUnit-In-Browser will automatically open the DevTools for you and cause test execution to pause, allowing you to start debugging.
 
-```js
+{% highlight javascript linenos %}
 QUnit.test.inBrowser('Debugging test', 'https://pretty-okay.com', function(assert) {
   debugger; // Opens DevTools and pauses the test
 });
-```
+{% endhighlight %}
 
 This new approach hits the sweet spot of prioritizing user experience _and_ developer experience.
 
