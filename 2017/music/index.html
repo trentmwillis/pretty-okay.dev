@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Trent Willis' 2017 Music Journey</title>
+
+  <link rel="stylesheet" href="../../css/main.css">
+  <style>
+    .banner {
+      min-height: 100vh;
+    }
+
+    .banner-description {
+      margin: 2rem auto;
+      color: white;
+      line-height: 2;
+      font-weight: 200;
+    }
+
+    .entry {
+      position: relative;
+      background-size: contain;
+      background-position: 50% 50%;
+    }
+
+    .entry::before {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to left, #7b4397, #dc2430);
+      opacity: 0.3;
+    }
+
+    .entry-content {
+      position: relative;
+      min-height: 100vh;
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    .entry header,
+    .entry section {
+      background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,1));
+      padding: 1rem;
+    }
+
+    .title,
+    .date {
+      margin: 0;
+    }
+
+    .entry.rtl header {
+      grid-row: 1;
+      grid-column: 3;
+    }
+
+    .entry.rtl section {
+      grid-row: 1;
+      grid-column: 1;
+    }
+
+    .controls {
+      text-align: center;
+    }
+
+    .play {
+      background-color: rgba(123, 67, 151, 0.8);
+      color: white;
+      border: 0.25rem solid white;
+      border-radius: 100%;
+      width: 5rem;
+      height: 5rem;
+      font-size: 3rem;
+      transition: background-color 0.3s, color 0.3s;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+    }
+
+    .play:hover,
+    .play:focus {
+      background-color: rgba(123, 67, 151, 1);
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(123, 67, 151, 0.6);
+      }
+      70% {
+          box-shadow: 0 0 0 2rem rgba(123, 67, 151, 0);
+      }
+      100% {
+          box-shadow: 0 0 0 0 rgba(123, 67, 151, 0);
+      }
+    }
+
+    .entry .iframe-container {
+      grid-column: 1/4;
+    }
+
+    .entry .iframe-container::before {
+      content: "";
+      display: inline-block;
+      width: 1px;
+      height: 0;
+      padding-bottom: calc(100% / (16 / 9));
+      background: black;
+      transition: padding-bottom 0.5s;
+    }
+
+    .entry .iframe-container.is-hidden::before {
+      padding-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <header class="banner">
+    <div class="wrapper">
+      <h1 class="banner-title">Trent Willis' 2017 Music Journey</h1>
+      <p class="banner-description">
+          Every year I like to reflect on the music that was the most impactful to me. I used to do this by picking an "album of the year".
+          <br>
+          <br>
+          Several years ago, however, I realized that trying to pick an "album of the year" or a list of the "best" albums led me to write and reflect on the albums that I thought others would approve of, and not necessarily the albums that actually played a large role in my life during the year.
+          <br>
+          <br>
+          So, for the past few years, I have put together "music journeys" instead; lists of songs from various albums that I listened to a lot over the course of the year. I arrange the songs chronologically by when they entered my library, so the only reflection that has to happen is whether I thought the song was important to me and when I started listening to it.
+          <br>
+          <br>
+          This is my first year sharing one of these lists and I hope you enjoy the peek into my life and what music has been important to me this year.
+      </p>
+    </div>
+  </header>
+
+  <main id="main">
+  </main>
+
+  <template id="entry-template">
+    <article class="entry" style="background-image: url('./album-covers/{{imageName}}.jpg')">
+      <div class="entry-content">
+        <header>
+          <h2 class="title">&ldquo;<strong>{{song}}</strong>&rdquo; by <strong>{{artist}}</strong> on <strong><em>{{album}}</em></strong></h2>
+          <p class="date">{{date}}</p>
+        </header>
+
+        <div class="controls">
+          <button class="play">&#9654;</button>
+        </div>
+
+        <section>{{review}}</section>
+
+        <!-- <div class="iframe-container">
+          <iframe src="" frameborder="0"></iframe>
+        </div> -->
+      </div>
+    </article>
+  </template>
+
+  <script src="./bound-template.js"></script>
+  <script>
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const monthToString = month => months[month - 1];
+    const hyphenate = str => str.toLowerCase().split(' ').join('-').replace(/\!|'|:/g, '');
+    const songInfo = [
+      {
+        date: "011317",
+        album: "Forever",
+        artist: "Code Orange",
+        song: "The New Reality"
+      },
+      {
+        date: "012317",
+        album: "Pain & Suffering",
+        artist: "Advent",
+        song: "Weight of the World"
+      },
+      {
+        date: "021817",
+        album: "The Rhapsody Tapes",
+        artist: "Ocean Grove",
+        song: "Intimate Alien"
+      },
+      {
+        date: "050517",
+        album: "Thousand Mile Stare",
+        artist: "Incendiary",
+        song: "Front Toward Enemy"
+      },
+      {
+        date: "050517",
+        album: "Reclaimer",
+        artist: "Shadow of Intent",
+        song: "The Horror Within"
+      },
+      {
+        date: "051417",
+        album: "Cold",
+        artist: "Gideon",
+        song: "Champions"
+      },
+      {
+        date: "051717",
+        album: "Two Parts Viper",
+        artist: "'68",
+        song: "Whether Terrified Or Unafraid"
+      },
+      {
+        date: "052217",
+        album: "Self Supremacy",
+        artist: "Malevolence",
+        song: "Self Supremacy"
+      },
+      {
+        date: "052717",
+        album: "LA Divine",
+        artist: "Cold War Kids",
+        song: "Restless"
+      },
+      {
+        date: "052817",
+        album: "Surprise!",
+        artist: "Mystery Weekend",
+        song: "Everyone's A Liar"
+      },
+      {
+        date: "060317",
+        album: "Ark",
+        artist: "In Hearts Wake",
+        song: "Nomad"
+      },
+      {
+        date: "060817",
+        album: "Different Animals",
+        artist: "Volumes",
+        song: "Finite"
+      },
+      {
+        date: "061317",
+        album: "Fantasy",
+        artist: "Eternity Forever",
+        song: "Movies"
+      },
+      {
+        date: "061317",
+        album: "Senpai EP II: The Noticing",
+        artist: "Sithu Aye",
+        song: "Summer Break!"
+      },
+      {
+        date: "061617",
+        album: "Homey",
+        artist: "Chon",
+        song: "Nayhoo"
+      },
+      {
+        date: "061617",
+        album: "The Place I Feel Safest",
+        artist: "Currents",
+        song: "Forget Me"
+      },
+      {
+        date: "080717",
+        album: "Pain Again",
+        artist: "Varials",
+        song: "E.D.A."
+      },
+      {
+        date: "080917",
+        album: "Deadweight",
+        artist: "Wage War",
+        song: "Southbound"
+      },
+      {
+        date: "080917",
+        album: "Dear Desolation",
+        artist: "Thy Art is Murder",
+        song: "Slaves Beyond Death"
+      },
+      {
+        date: "080917",
+        album: "Freedom",
+        artist: "Crossfaith",
+        song: "Freedom"
+      },
+      {
+        date: "080917",
+        album: "Always Lose",
+        artist: "The Gospel Youth",
+        song: "Moods Like English Weather"
+      },
+      {
+        date: "090617",
+        album: "From the Unforgiving Arms of God",
+        artist: "END",
+        song: "Usurper"
+      },
+      {
+        date: "090917",
+        album: "Only Death Is Real",
+        artist: "Stray From The Path",
+        song: "Strange Fiction"
+      },
+      {
+        date: "092517",
+        album: "You're Not You Anymore",
+        artist: "Counterparts",
+        song: "Bouquet"
+      },
+      {
+        date: "092517",
+        album: "The Spark",
+        artist: "Enter Shikari",
+        song: "The Sights"
+      },
+      {
+        date: "092517",
+        album: "Nomad",
+        artist: "Kublai Khan",
+        song: "The Hammer"
+      },
+      {
+        date: "100617",
+        album: "Phantom Anthem",
+        artist: "August Burns Red",
+        song: "Float"
+      },
+      {
+        date: "100617",
+        album: "Places",
+        artist: "The Ongoing Concept",
+        song: "You Will Go"
+      },
+      {
+        date: "102217",
+        album: "Feel Something",
+        artist: "Movements",
+        song: "Daylily"
+      },
+      {
+        date: "110917",
+        album: "Secret Wars",
+        artist: "Hail The Sun",
+        song: "Repellent"
+      },
+      {
+        date: "111217",
+        album: "Cold Like War",
+        artist: "We Came As Romans",
+        song: "Wasted Age"
+      }
+    ].map(song => {
+      const month = parseInt(song.date.substr(0, 2), 10);
+      const day = parseInt(song.date.substr(2, 2), 10);
+      const year = 2000 + parseInt(song.date.substr(4, 2), 10);
+      song.date = `${monthToString(month)} ${day}, ${year}`;
+
+      const imageName = `${hyphenate(song.artist)}_${hyphenate(song.album)}`;
+      song.imageName = imageName;
+
+      return song;
+    });
+
+    const main = document.getElementById('main');
+    const template = new BoundTemplate(document.getElementById('entry-template'));
+
+    songInfo.forEach(item => {
+      const [instance] = template.create(item);
+      main.appendChild(instance);
+    });
+  </script>
+</body>
+</html>
