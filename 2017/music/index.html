@@ -174,15 +174,20 @@
 
         <section>{{review}}</section>
 
-        <div class="iframe-container is-hidden">
-          <iframe src="" frameborder="0"></iframe>
-        </div>
+        <div class="iframe-container is-hidden"></div>
       </div>
     </article>
   </template>
 
   <script src="./bound-template.js"></script>
   <script>
+    const createIframe = (container) => {
+      const iframe = document.createElement('iframe');
+      iframe.setAttribute('frameborder', 0);
+      container.appendChild(iframe);
+      return iframe;
+    };
+
     document.addEventListener('click', (event) => {
 
       const target = event.target;
@@ -193,7 +198,8 @@
 
         iframeContainer.classList.remove('is-hidden');
 
-        const iframe = iframeContainer.querySelector('iframe');
+        const existingIframe = iframeContainer.querySelector('iframe');
+        const iframe = existingIframe || createIframe(iframeContainer);
         iframe.src = `https://www.youtube.com/embed/${target.dataset.youtubeId}?autoplay=1`;
 
         target.style.display = 'none';
@@ -452,10 +458,12 @@
     const main = document.getElementById('main');
     const template = new BoundTemplate(document.getElementById('entry-template'));
 
+    const fragment = document.createDocumentFragment();
     songInfo.forEach(item => {
       const [instance] = template.create(item);
-      main.appendChild(instance);
+      fragment.appendChild(instance);
     });
+    main.appendChild(fragment);
   </script>
 </body>
 </html>
