@@ -60,16 +60,6 @@
       margin: 0;
     }
 
-    .entry.rtl header {
-      grid-row: 1;
-      grid-column: 3;
-    }
-
-    .entry.rtl section {
-      grid-row: 1;
-      grid-column: 1;
-    }
-
     .controls {
       text-align: center;
     }
@@ -86,6 +76,10 @@
       transition: background-color 0.3s, color 0.3s;
       cursor: pointer;
       animation: pulse 2s infinite;
+    }
+
+    .pause {
+      animation: none;
     }
 
     .play:hover,
@@ -132,6 +126,14 @@
 
     .entry .iframe-container.is-hidden::before {
       padding-bottom: 0;
+    }
+
+    @media (max-width: 600px) {
+      .entry header,
+      .controls,
+      .entry section {
+        grid-column: 1/4;
+      }
     }
   </style>
 </head>
