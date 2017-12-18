@@ -39,11 +39,14 @@
       min-height: 100vh;
       max-width: 960px;
       margin: 0 auto;
+      padding: 1rem 0;
+      box-sizing: border-box;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       align-content: center;
       align-items: center;
       color: white;
+      grid-row-gap: 1rem;
     }
 
     .entry header,
@@ -71,7 +74,8 @@
       text-align: center;
     }
 
-    .play {
+    .play,
+    .pause {
       background-color: rgba(123, 67, 151, 0.8);
       color: white;
       border: 0.25rem solid white;
@@ -85,7 +89,9 @@
     }
 
     .play:hover,
-    .play:focus {
+    .play:focus,
+    .pause:hover,
+    .pause:focus {
       background-color: rgba(123, 67, 151, 1);
     }
 
@@ -102,17 +108,26 @@
     }
 
     .entry .iframe-container {
+      position: relative;
       grid-column: 1/4;
     }
 
     .entry .iframe-container::before {
       content: "";
-      display: inline-block;
+      display: block;
       width: 1px;
       height: 0;
       padding-bottom: calc(100% / (16 / 9));
-      background: black;
       transition: padding-bottom 0.5s;
+    }
+
+    .entry iframe {
+      background: black;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
 
     .entry .iframe-container.is-hidden::before {
@@ -151,20 +166,54 @@
         </header>
 
         <div class="controls">
-          <button class="play">&#9654;</button>
+          <button class="play" data-youtube-id="{{youtubeId}}">&#9654;</button>
+          <button class="pause" style="display: none">&#9632;</button>
         </div>
 
         <section>{{review}}</section>
 
-        <!-- <div class="iframe-container">
+        <div class="iframe-container is-hidden">
           <iframe src="" frameborder="0"></iframe>
-        </div> -->
+        </div>
       </div>
     </article>
   </template>
 
   <script src="./bound-template.js"></script>
   <script>
+    document.addEventListener('click', (event) => {
+
+      const target = event.target;
+      if (target.classList.contains('play')) {
+
+        const entry = target.closest('.entry');
+        const iframeContainer = entry.querySelector('.iframe-container');
+
+        iframeContainer.classList.remove('is-hidden');
+
+        const iframe = iframeContainer.querySelector('iframe');
+        iframe.src = `https://www.youtube.com/embed/${target.dataset.youtubeId}?autoplay=1`;
+
+        target.style.display = 'none';
+        entry.querySelector('.pause').style.display = null;
+
+      } else if (target.classList.contains('pause')) {
+
+        const entry = target.closest('.entry');
+        const iframeContainer = entry.querySelector('.iframe-container');
+
+        iframeContainer.classList.add('is-hidden');
+
+        const iframe = iframeContainer.querySelector('iframe');
+        iframe.src = null;
+
+        target.style.display = 'none';
+        entry.querySelector('.play').style.display = null;
+
+      }
+
+    });
+
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const monthToString = month => months[month - 1];
     const hyphenate = str => str.toLowerCase().split(' ').join('-').replace(/\!|'|:/g, '');
@@ -173,187 +222,218 @@
         date: "011317",
         album: "Forever",
         artist: "Code Orange",
-        song: "The New Reality"
+        song: "The New Reality",
+        youtubeId: "dZ9JVxQVQy4"
       },
       {
         date: "012317",
         album: "Pain & Suffering",
         artist: "Advent",
-        song: "Weight of the World"
+        song: "Weight of the World",
+        youtubeId: "tJJHz-WE3Ao"
       },
       {
         date: "021817",
         album: "The Rhapsody Tapes",
         artist: "Ocean Grove",
-        song: "Intimate Alien"
+        song: "Intimate Alien",
+        youtubeId: "T2LO5FyASDU"
       },
       {
         date: "050517",
         album: "Thousand Mile Stare",
         artist: "Incendiary",
-        song: "Front Toward Enemy"
+        song: "Front Toward Enemy",
+        youtubeId: "H5FBvGpgGWg"
       },
       {
         date: "050517",
         album: "Reclaimer",
         artist: "Shadow of Intent",
-        song: "The Horror Within"
+        song: "The Horror Within",
+        youtubeId: "qhuu0PIB8A0"
       },
       {
         date: "051417",
         album: "Cold",
         artist: "Gideon",
-        song: "Champions"
+        song: "Champions",
+        youtubeId: "y0ZIj27Km3U"
       },
       {
         date: "051717",
         album: "Two Parts Viper",
         artist: "'68",
-        song: "Whether Terrified Or Unafraid"
+        song: "Whether Terrified Or Unafraid",
+        youtubeId: "3nOic5O6qvE"
       },
       {
         date: "052217",
         album: "Self Supremacy",
         artist: "Malevolence",
-        song: "Self Supremacy"
+        song: "Self Supremacy",
+        youtubeId: "E069_0MShkI"
       },
       {
         date: "052717",
         album: "LA Divine",
         artist: "Cold War Kids",
-        song: "Restless"
+        song: "Restless",
+        youtubeId: "dd8-wjXIoVo"
       },
       {
         date: "052817",
         album: "Surprise!",
         artist: "Mystery Weekend",
-        song: "Everyone's A Liar"
+        song: "Everyone's A Liar",
+        youtubeId: "a1MKhpxbhrg"
       },
       {
         date: "060317",
         album: "Ark",
         artist: "In Hearts Wake",
-        song: "Nomad"
+        song: "Nomad",
+        youtubeId: "XKaS-TM1gUc"
       },
       {
         date: "060817",
         album: "Different Animals",
         artist: "Volumes",
-        song: "Finite"
+        song: "Finite",
+        youtubeId: "9ag2RyDdBWU"
       },
       {
         date: "061317",
         album: "Fantasy",
         artist: "Eternity Forever",
-        song: "Movies"
+        song: "Movies",
+        youtubeId: "1T_aVdFfH3Q"
       },
       {
         date: "061317",
         album: "Senpai EP II: The Noticing",
         artist: "Sithu Aye",
-        song: "Summer Break!"
+        song: "Summer Break!",
+        youtubeId: "ftf961GlTbw"
       },
       {
         date: "061617",
         album: "Homey",
         artist: "Chon",
-        song: "Nayhoo"
+        song: "Nayhoo",
+        youtubeId: "nPXPURGP-6k"
       },
       {
         date: "061617",
         album: "The Place I Feel Safest",
         artist: "Currents",
-        song: "Forget Me"
+        song: "Forget Me",
+        youtubeId: "ppO1TXmfpeA"
       },
       {
         date: "080717",
         album: "Pain Again",
         artist: "Varials",
-        song: "E.D.A."
+        song: "E.D.A.",
+        youtubeId: "XAm064U4Czk"
       },
       {
         date: "080917",
         album: "Deadweight",
         artist: "Wage War",
-        song: "Southbound"
+        song: "Southbound",
+        youtubeId: "8nrNk4XzHB4"
       },
       {
         date: "080917",
         album: "Dear Desolation",
         artist: "Thy Art is Murder",
-        song: "Slaves Beyond Death"
+        song: "Slaves Beyond Death",
+        youtubeId: "yvPK0qKB8m4"
       },
       {
         date: "080917",
         album: "Freedom",
         artist: "Crossfaith",
-        song: "Freedom"
+        song: "Freedom",
+        youtubeId: "VYWbnIPbnJo"
       },
       {
         date: "080917",
         album: "Always Lose",
         artist: "The Gospel Youth",
-        song: "Moods Like English Weather"
+        song: "Moods Like English Weather",
+        youtubeId: "EgMKWRmNT0g"
       },
       {
         date: "090617",
         album: "From the Unforgiving Arms of God",
         artist: "END",
-        song: "Usurper"
+        song: "Usurper",
+        youtubeId: "suUXNYGdjdo"
       },
       {
         date: "090917",
         album: "Only Death Is Real",
         artist: "Stray From The Path",
-        song: "Strange Fiction"
+        song: "Strange Fiction",
+        youtubeId: "VDu3qECc91Y"
       },
       {
         date: "092517",
         album: "You're Not You Anymore",
         artist: "Counterparts",
-        song: "Bouquet"
+        song: "Bouquet",
+        youtubeId: "mhI5JfwXdfE"
       },
       {
         date: "092517",
         album: "The Spark",
         artist: "Enter Shikari",
-        song: "The Sights"
+        song: "The Sights",
+        youtubeId: "9ymjcSvEyhk"
       },
       {
         date: "092517",
         album: "Nomad",
         artist: "Kublai Khan",
-        song: "The Hammer"
+        song: "The Hammer",
+        youtubeId: "8GGMdMo61_o"
       },
       {
         date: "100617",
         album: "Phantom Anthem",
         artist: "August Burns Red",
-        song: "Float"
+        song: "Float",
+        youtubeId: "IioL0WpucBY"
       },
       {
         date: "100617",
         album: "Places",
         artist: "The Ongoing Concept",
-        song: "You Will Go"
+        song: "You Will Go",
+        youtubeId: "mC6rsfua81A"
       },
       {
         date: "102217",
         album: "Feel Something",
         artist: "Movements",
-        song: "Daylily"
+        song: "Daylily",
+        youtubeId: "PedACuLiMxU"
       },
       {
         date: "110917",
         album: "Secret Wars",
         artist: "Hail The Sun",
-        song: "Repellent"
+        song: "Repellent",
+        youtubeId: "s8fHxCFyZFA"
       },
       {
         date: "111217",
         album: "Cold Like War",
         artist: "We Came As Romans",
-        song: "Wasted Age"
+        song: "Wasted Age",
+        youtubeId: "Elddy5PYe5w"
       }
     ].map(song => {
       const month = parseInt(song.date.substr(0, 2), 10);
