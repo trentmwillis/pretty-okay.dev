@@ -6,47 +6,113 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Trent Willis' 2017 Music Journey</title>
 
-  <link rel="stylesheet" href="../../css/main.css">
   <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+      margin: 0;
+    }
+
+    /* BANNER */
+
     .banner {
+      background-image: linear-gradient(to left, #7b4397, #dc2430);
+      box-sizing: border-box;
+      color: white;
       min-height: 100vh;
+      padding: 4rem 2rem;
+      text-align: left;
+    }
+
+    .banner-inner {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      max-width: 50ch;
+    }
+
+    .banner-title {
+      font-size: 48px;
+      font-weight: bold;
+      line-height: 1;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .banner-byline {
+      color: white;
+      font-size: 16px;
+      letter-spacing: 2px;
+      margin: 2rem 0;
+      text-align: left;
     }
 
     .banner-description {
-      margin: 2rem auto;
       color: white;
+      font-size: 16px;
       line-height: 2;
-      font-weight: 200;
+      margin: 0;
     }
 
+    @media (min-width: 320px) {
+      .banner-title {
+        font-size: calc(48px + 72 * ((100vw - 320px) / 760));
+      }
+
+      .banner-byline {
+        font-size: calc(16px + 6 * ((100vw - 320px) / 760));
+      }
+
+      .banner-description {
+        font-size: calc(16px + 2 * ((100vw - 320px) / 760));
+      }
+    }
+
+    @media (min-width: 1080px) {
+      .banner-title {
+        font-size: 120px;
+      }
+
+      .banner-byline {
+        font-size: 22px;
+      }
+
+      .banner-description {
+        font-size: 18px;
+      }
+    }
+
+    /* ENTRIES */
+
     .entry {
-      position: relative;
+      background-position: 50% 0;
       background-size: contain;
-      background-position: 50% 50%;
+      position: relative;
     }
 
     .entry::before {
-      position: absolute;
       content: '';
-      width: 100%;
-      height: 100%;
       background: linear-gradient(to left, #7b4397, #dc2430);
+      height: 100%;
       opacity: 0.3;
+      position: absolute;
+      width: 100%;
     }
 
     .entry-content {
-      position: relative;
-      min-height: 100vh;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 0;
-      box-sizing: border-box;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
       align-content: center;
       align-items: center;
+      box-sizing: border-box;
       color: white;
-      grid-row-gap: 1rem;
+      display: grid;
+      grid-gap: 0;
+      grid-template-columns: 1fr 1fr;
+      margin: 0 auto;
+      max-width: 1080px;
+      min-height: 100vh;
+      padding: 1rem;
+      padding-top: 50vw;
+      position: relative;
     }
 
     .entry header,
@@ -55,27 +121,59 @@
       padding: 1rem;
     }
 
+    .entry header {
+      grid-row: 1;
+      grid-column: 1/3;
+    }
+
+    .entry section {
+      font-size: 16px;
+      grid-column: 1/3;
+      grid-row: 2;
+      line-height: 2;
+      column-count: 1;
+    }
+
+    .controls {
+      grid-column: 1/3;
+      grid-row: 3;
+      text-align: center;
+    }
+
     .title,
     .date {
       margin: 0;
     }
 
-    .controls {
-      text-align: center;
+    .title {
+      background: linear-gradient(to left, #7b4397, #dc2430);
+      color: #7b4397;
+      font-size: 22px;
+      font-weight: 200;
+      line-height: 1.5;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .date {
+      font-size: 16px;
+      line-height: 2;
     }
 
     .play,
     .pause {
-      background-color: rgba(123, 67, 151, 0.8);
-      color: white;
-      border: 0.25rem solid white;
-      border-radius: 100%;
-      width: 5rem;
-      height: 5rem;
-      font-size: 3rem;
-      transition: background-color 0.3s, color 0.3s;
-      cursor: pointer;
       animation: pulse 2s infinite;
+      background-color: rgba(123, 67, 151, 0.8);
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      font-size: 3rem;
+      height: 5rem;
+      margin: 2rem 0px;
+      padding: 0;
+      transition: background-color 0.3s, color 0.3s;
+      width: 100%;
     }
 
     .pause {
@@ -102,45 +200,92 @@
     }
 
     .entry .iframe-container {
+      background: black;
+      grid-row: 4;
+      grid-column: 1/3;
       position: relative;
-      grid-column: 1/4;
     }
 
     .entry .iframe-container::before {
       content: "";
       display: block;
-      width: 1px;
       height: 0;
       padding-bottom: calc(100% / (16 / 9));
       transition: padding-bottom 0.5s;
-    }
-
-    .entry iframe {
-      background: black;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      width: 1px;
     }
 
     .entry .iframe-container.is-hidden::before {
       padding-bottom: 0;
     }
 
-    @media (max-width: 600px) {
-      .entry header,
-      .controls,
+    .entry iframe {
+      position: absolute;
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+
+    @media (min-width: 320px) {
+      .title {
+        font-size: calc(22px + 10 * ((100vw - 320px) / 760));
+      }
+
+      .date,
       .entry section {
-        grid-column: 1/4;
+        font-size: calc(16px + 2 * ((100vw - 320px) / 760));
+      }
+    }
+
+    @media (min-width: 700px) {
+      .entry-content {
+        grid-gap: 1rem;
+        padding-top: 1rem;
+      }
+
+      .entry header {
+        grid-column: 1;
+      }
+
+      .entry section {
+        column-count: 2;
+      }
+
+      .controls {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .play,
+      .pause {
+        border-radius: 5rem;
+        border: 0.25rem solid white;
+        width: 5rem;
+      }
+
+      .entry .iframe-container {
+        grid-row: 3;
+      }
+    }
+
+    @media (min-width: 1080px) {
+      .title {
+        font-size: 32px;
+      }
+
+      .date,
+      .entry section {
+        font-size: 18px;
       }
     }
   </style>
 </head>
 <body>
   <header class="banner">
-    <div class="wrapper">
-      <h1 class="banner-title">Trent Willis' 2017 Music Journey</h1>
+    <div class="banner-inner">
+      <h1 class="banner-title">2017<br>Music<br>Journey</h1>
+      <p class="banner-byline">by @trentmwillis</p>
       <p class="banner-description">
           Every year I like to reflect on the music that was the most impactful to me. I used to do this by picking an "album of the year".
           <br>
@@ -160,7 +305,7 @@
   </main>
 
   <template id="entry-template">
-    <article class="entry" style="background-image: url('./album-covers/{{imageName}}.jpg')">
+    <article class="entry" data-background-image="./album-covers/{{imageName}}.jpg">
       <div class="entry-content">
         <header>
           <h2 class="title">&ldquo;<strong>{{song}}</strong>&rdquo; by <strong>{{artist}}</strong> on <strong><em>{{album}}</em></strong></h2>
@@ -168,7 +313,7 @@
         </header>
 
         <div class="controls">
-          <button class="play" data-youtube-id="{{youtubeId}}">&#9654;</button>
+          <button class="play" data-youtube-id="{{youtubeId}}">&#x25b6;&#xFE0E;</button>
           <button class="pause" style="display: none">&#9632;</button>
         </div>
 
@@ -198,8 +343,7 @@
 
         iframeContainer.classList.remove('is-hidden');
 
-        const existingIframe = iframeContainer.querySelector('iframe');
-        const iframe = existingIframe || createIframe(iframeContainer);
+        const iframe = createIframe(iframeContainer);
         iframe.src = `https://www.youtube.com/embed/${target.dataset.youtubeId}?autoplay=1`;
 
         target.style.display = 'none';
@@ -213,7 +357,7 @@
         iframeContainer.classList.add('is-hidden');
 
         const iframe = iframeContainer.querySelector('iframe');
-        iframe.src = null;
+        iframeContainer.removeChild(iframe);
 
         target.style.display = 'none';
         entry.querySelector('.play').style.display = null;
@@ -350,7 +494,8 @@
         album: "Deadweight",
         artist: "Wage War",
         song: "Southbound",
-        youtubeId: "8nrNk4XzHB4"
+        youtubeId: "8nrNk4XzHB4",
+        review: "I really don't think Wage War is that special of a band when it comes to metalcore, but their music is just ridiculously fun to jam and mosh to. On Deadweight, I don't think any song exemplifies that as much as Southbound, which is basically just a 3-minute long alternation between catchy, singalong choruses and moshable breakdowns."
       },
       {
         date: "080917",
@@ -385,63 +530,72 @@
         album: "Only Death Is Real",
         artist: "Stray From The Path",
         song: "Strange Fiction",
-        youtubeId: "VDu3qECc91Y"
+        youtubeId: "VDu3qECc91Y",
+        review: "With this past year in United States politics, it is only natural that Stray From The Path released what is quite possibly their most controversial and in your face record yet. In typical (and enjoyable) fashion, they deliver a heavy, New York influenced take on rap-infused hardcore. While not my favorite album by them, it certainly has some seriously banging tracks on it. The opener is no exception. It's short, sweet, and likely to make the kids lose their shit (I also realized, I'm old enough now to say this)."
       },
       {
         date: "092517",
         album: "You're Not You Anymore",
         artist: "Counterparts",
         song: "Bouquet",
-        youtubeId: "mhI5JfwXdfE"
+        youtubeId: "mhI5JfwXdfE",
+        review: "This album blew me away. I was not a huge fan of their past works that I had listened to, but this album just connects so much better for me. The vocals are crisper, the songs more varied, and that combination just drives home the aggressive driving brand of hardcore that Counterparts is known for. Bouquet is a perfect example of this as the leading track after the intro that absolutely launches the album straight into high gear. It's so good, which has made it quite difficult to give the back-half of the albums as much attention unfortunately."
       },
       {
         date: "092517",
         album: "The Spark",
         artist: "Enter Shikari",
         song: "The Sights",
-        youtubeId: "9ymjcSvEyhk"
+        youtubeId: "9ymjcSvEyhk",
+        review: "I was really unsure how I felt about this album upon listening to it. The album has much stronger pop and electronic elements than their previous works which often borrowed heavily from post-hardcore and punk influences. That said, it is very much in keeping with the bands genre-defying modus operandi and is really catchy throughout most of it. The Sights I feel is the best representation of this new Enter Shikari; it's poppy, catchy and yet still edgy enough that it is unlikely to ever see radio play in the States."
       },
       {
         date: "092517",
         album: "Nomad",
         artist: "Kublai Khan",
         song: "The Hammer",
-        youtubeId: "8GGMdMo61_o"
+        youtubeId: "8GGMdMo61_o",
+        review: "They're back. And more pissed off than ever. I've been a fan of Kublai Khan for a while now, but their last album was underwhelming to me after the absolutely incredible Balancing Survival And Happiness. This album, however, sees them coming back into form with some more interesting song structures than in the past, though lyrically it leaves something to be desired. Anyway, The Hammer has been my go to jam for lifting heavy things since it was released and shows no signs of going away anytime soon."
       },
       {
         date: "100617",
         album: "Phantom Anthem",
         artist: "August Burns Red",
         song: "Float",
-        youtubeId: "IioL0WpucBY"
+        youtubeId: "IioL0WpucBY",
+        review: "The day August Burns Red releases an album I don't enjoy will likely be when I decide to stop listening to metal. Which will probably also be when I die. Joking aside, this album may be my favorite release of theirs since Constellations (which is huge). It feels much more cohesive than their last few albums, which often contained progressive elements that felt a little forced to me; on Phantom Anthem they feel natural. Invisible Enemy is a perfect example of this, as it blends their signature metalcore sound with some East Asian influences and even is reminiscent of their older work on Messengers. Oh, and it was nominated for a Grammy, so that's impressive."
       },
       {
         date: "100617",
         album: "Places",
         artist: "The Ongoing Concept",
         song: "You Will Go",
-        youtubeId: "mC6rsfua81A"
+        youtubeId: "mC6rsfua81A",
+        review: "I've been a huge fan of The Ongoing Concept since their pre-record-label days, so it was a big disappoint to me to see almost all the members of the band leave between their last album and this one. To say I was skeptical of it, would be a drastic understatement. That said, when I finally gave this single a listen, I was sold. The band still retains much of their original sound, but with slightly more experimentation (which is straneg, cause this band was already pretty out there). In particular, the album is highly self-referential which is really incredible. The music video for this song actually contains references to all their past music videos, which makes everything feel more connected to their previous works even with the lineup change."
       },
       {
         date: "102217",
         album: "Feel Something",
         artist: "Movements",
         song: "Daylily",
-        youtubeId: "PedACuLiMxU"
+        youtubeId: "PedACuLiMxU",
+        review: "I remember listening to Movements earlier in this year and finding their music underwhelming. However, after seeing them play at Worthwhile's farewell show and seeing how into it the crowd was, I felt I needed to give their new album a chance. In short, this album became one of my favorites of the year. Every song in the album is lovely, but Daylily stands out to me due to its lyrical themes and the alternating mellow and upbeat interplay of emo and pop-punk elements. If you, or anyone you know, has ever dealt with depression, this song will likely hit you hard."
       },
       {
         date: "110917",
         album: "Secret Wars",
         artist: "Hail The Sun",
         song: "Repellent",
-        youtubeId: "s8fHxCFyZFA"
+        youtubeId: "s8fHxCFyZFA",
+        review: "I've known about Hail The Sun for a while now, but hadn't given them a listen this EP was released. The band's sound is in many ways reminiscent of a blend of Circa Survive and Dance Gavin Dance, in the best ways possible. The proggy guitar riffs mixed with alternating soaring and blistering vocals satisfies both my love for dissonant and melodic music at the same time. In short, after listening to this opening track just once, I regretted not listening to this band sooner."
       },
       {
         date: "111217",
         album: "Cold Like War",
         artist: "We Came As Romans",
         song: "Wasted Age",
-        youtubeId: "Elddy5PYe5w"
+        youtubeId: "Elddy5PYe5w",
+        review: "The first album by We Came As Romans was a big part of my senior (?) year of high school. So, it was always unfortunate that the bands albums since then didn't really ever catch my interest. Cold Like War, however, changed that. It has the same sort of blend of heavy, catchy, and unique that To Plant A Seed had without sounding they're just doing the same thing. Wasted Age in particular I feel represents how the band has evolved, yet still has many of the same elements that caused me to fall in love with the first album."
       }
     ].map(song => {
       const month = parseInt(song.date.substr(0, 2), 10);
@@ -459,11 +613,34 @@
     const template = new BoundTemplate(document.getElementById('entry-template'));
 
     const fragment = document.createDocumentFragment();
-    songInfo.forEach(item => {
+    const entries = songInfo.map(item => {
       const [instance] = template.create(item);
-      fragment.appendChild(instance);
+      const entry = instance.firstElementChild;
+      fragment.appendChild(entry);
+      return entry;
     });
     main.appendChild(fragment);
+
+    const windowHeight = window.innerHeight;
+    const halfWindowHeight = windowHeight / 2;
+    document.addEventListener('scroll', function loadImages() {
+      for (let i = 0; i < entries.length; i++) {
+        const entry = entries[i];
+        const rect = entry.getBoundingClientRect();
+
+        if (
+          rect.top >= -halfWindowHeight && rect.top <= windowHeight + halfWindowHeight ||
+          rect.bottom >= -halfWindowHeight && rect.bottom <= windowHeight + halfWindowHeight
+        ) {
+          entry.style.backgroundImage = `url("${entry.dataset.backgroundImage}")`;
+          entries.splice(i--, 1);
+        }
+      }
+
+      if (entries.length === 0) {
+        document.removeEventListener('scroll', loadImages);
+      }
+    }, { passive: true });
   </script>
 </body>
 </html>
