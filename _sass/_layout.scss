@@ -3,30 +3,55 @@
  */
 
 .site-header {
-  position: absolute;
-  height: $spacing-unit * 3;
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  padding: ($spacing-unit * 2);
   width: 100%;
-  z-index: $z-title;
-}
-
-.main-nav {
-  max-width: $content-width;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 3;
-  letter-spacing: 0.1rem;
-  color: rgba($color-white, 0.5);
 
   &_link {
-    color: inherit;
-    margin: 0.25rem;
+    font-weight: bold;
+    margin-left: ($spacing-unit / 2);
+    padding-bottom: ($spacing-unit / 4);
 
-    &.active,
-    &:hover {
-      color: $color-white;
+    &.active {
+      border-bottom: 2px solid $color-accent;
+      color: $color-accent;
     }
+  }
+
+  &_nav {
+    float: right;
+    margin-left: $spacing-unit;
+  }
+}
+
+.site-title {
+  line-height: 1;
+  font-size: $medium;
+  margin-left: 0;
+  padding-bottom: 0;
+  text-transform: uppercase;
+}
+
+@include media-query($device-mobile) {
+  .site-header {
+    padding: ($spacing-unit);
+
+    &_link {
+      display: block;
+      padding-bottom: 0;
+      text-align: right;
+
+      &.active {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .site-title {
+    text-align: left;
   }
 }
 
@@ -35,9 +60,12 @@
  */
 
 .banner {
+  align-items: center;
+  display: flex;
   position: relative;
-  padding: ($spacing-unit * 2.5) 0 ($spacing-unit * 1.5);
-  line-height: 1.5;
+  padding: ($spacing-unit * 2) 0;
+  min-height: ($spacing-unit * 10);
+  line-height: 1;
   text-align: center;
 
   @include gradient(to left);
@@ -66,6 +94,8 @@
   -webkit-text-fill-color: initial;
   font-size: $x-large;
   margin: 0;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 /**
@@ -210,10 +240,16 @@
 .profile-picture {
   border-radius: 100%;
   display: block;
-  margin: 2rem auto;
-  width: 200px;
+  margin: ($spacing-unit * 2) auto;
+  width: ($spacing-unit * 10);
 }
 
 .profile-picture-title {
   text-align: center;
+}
+
+@include media-query($device-mobile) {
+  .profile-picture {
+    width: ($spacing-unit * 8);
+  }
 }

@@ -1,10 +1,10 @@
 <header class="site-header">
-  <nav class="main-nav">
-    <a class="site-title main-nav_link" href="{{site.baseurl}}/">{{site.title}}</a>
-    |
+  <a class="site-title site-header_link" href="{{site.baseurl}}/">{{site.title}}</a>
+
+  <nav class="site-header_nav">
     {% for navPage in site.pages %}
       {% if navPage.nav_title %}
-        <a class="main-nav_link {% if navPage.url == page.url or navPage.category == page.category %}active{% endif %}" href="{{navPage.url | remove: '.html'}}">{{navPage.nav_title}}</a>
+        <a class="site-header_link {% if navPage.url == page.url or navPage.category == page.category %}active{% endif %}" href="{{navPage.url | remove: '.html'}}">{{navPage.nav_title}}</a>
       {% endif %}
     {% endfor %}
   </nav>
