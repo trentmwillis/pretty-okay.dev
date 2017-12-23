@@ -4,6 +4,7 @@ title:  "I Don't Care If You Like Ember"
 author: "Trent Willis"
 date:   2016-09-24
 image:  "2016-09-24-dont-care-ember.jpg"
+excerpt: "In my current role at LinkedIn, I interact with a lot of developers; on an average day, I work with a dozen or more different individuals discussing software engineering in some capacity. So, you can imagine that I encounter a lot of differing opinions about how we should be building our web applications."
 ---
 
 _I want to preface this post by saying it is not directed at anyone, but is rather a reflection on some interactions I have had both at work and in the open source community in past months._

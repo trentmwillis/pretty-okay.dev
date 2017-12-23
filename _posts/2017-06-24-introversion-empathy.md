@@ -4,6 +4,7 @@ title:  "Introversion & Empathy"
 author: "Trent Willis"
 date:   2017-06-24
 image:  "2017-06-24-introversion-empathy.jpg"
+excerpt: "I am an introvert. By that, I mean that I am drained by interacting with others, especially so in situations that are uncomfortable or unknown to me. When I feel tired or stressed I tend to isolate myself and stay relatively quiet."
 ---
 
 I am an introvert. By that, I mean that I am drained by interacting with others, especially so in situations that are uncomfortable or unknown to me. When I feel tired or stressed I tend to isolate myself and stay relatively quiet.

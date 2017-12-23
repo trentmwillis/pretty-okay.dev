@@ -1,20 +1,29 @@
 ---
 layout: default
-title: "Writing"
-nav_title: "Writing"
+title: "A <strong>blog</strong> about internet things. Mostly."
+nav_title: "Blog"
+landing: true
 ---
 
-<ul class="post-list">
+<ul class="post-list has-highlight">
   {% for post in site.posts %}
     {% unless post.category %}
       <li class="post-item">
+        <h2 class="post-title">
+          <a href="{{ post.id | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+
         <p class="post-meta">
           {{ post.date | date: "%b %-d, %Y" }} | <a href="{{ post.id | prepend: site.baseurl }}#disqus_thread" data-disqus-identifier="{{ post.id }}">0 Comments</a>
         </p>
 
-        <h2 class="post-title">
-          <a href="{{ post.id | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
+        <p class="post-excerpt">
+          {{ post.excerpt }}
+        </p>
+
+        <p class="read-more">
+          <a href="{{ post.id | prepend: site.baseurl }}">Read more...</a>
+        </p>
       </li>
     {% endunless %}
   {% endfor %}

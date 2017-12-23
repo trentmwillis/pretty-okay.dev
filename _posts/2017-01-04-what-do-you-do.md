@@ -4,6 +4,7 @@ title:  "What Do You Do?"
 author: "Trent Willis"
 date:   2017-01-04
 image:  "2017-01-04-what-do-you-do.jpg"
+excerpt: "In spite of the prevalence of software engineering nowadays, I still have many friends and family members that don’t know what it is that I do. So, the following is a made-up conversation to hopefully help clarify what it is that I (and many other web developers/software engineers) do."
 ---
 
 In spite of the prevalence of software engineering nowadays, I still have many friends and family members that don't know what it is that I do. So, the following is a made-up conversation to hopefully help clarify what it is that I (and many other web developers/software engineers) do.

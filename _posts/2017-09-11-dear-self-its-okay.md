@@ -4,6 +4,7 @@ title:  "Dear Self, It's Okay"
 author: "Trent Willis"
 date:   2017-09-11
 image:  "2017-09-11-dear-self-its-okay.jpg"
+excerpt: "The following is a letter to myself about burnout and, more importantly, encouragement when burnout begins to set in."
 ---
 
 _The following is a letter to myself about burnout and, more importantly, encouragement when burnout begins to set in._

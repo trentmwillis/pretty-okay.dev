@@ -4,12 +4,13 @@ title:  "Bottom-Up Culture & Code Reviews"
 author: "Trent Willis"
 date:   2016-01-16
 image:  "2016-01-16-culture-code-reviews.jpg"
+excerpt: "We’ve all heard that workplace culture is important and, with the experience of my relatively short career, I can attest to that fact. I’ve had numerous lunch-table discussions about company culture ranging from the now-cliché bashing of Silicon Valley lavishness to singing praises of how awesome LinkedIn’s culture is."
 ---
 
-> "See, when they ask you about the culture, tell them, 'I know it well'"  
+> "See, when they ask you about the culture, tell them, 'I know it well'"
 > <cite>Propaganda, [_Daywalkers_](https://youtu.be/GRAIb9k3bXM)</cite>
 
-We've all heard that [workplace culture is important](http://www.businessinsider.com/workplace-culture-is-important-2013-1) and, with the experience of my relatively short career, I can attest to that fact. I've had numerous lunch-table discussions about company culture ranging from the now-cliché [bashing of Silicon Valley lavishness](http://www.businessinsider.com/why-lavish-silicon-valley-perks-could-be-bad-for-workers-2013-7) to singing praises of [how awesome LinkedIn's culture is](https://www.glassdoor.com/Reviews/Employee-Review-LinkedIn-RVW5492270.htm). 
+We've all heard that [workplace culture is important](http://www.businessinsider.com/workplace-culture-is-important-2013-1) and, with the experience of my relatively short career, I can attest to that fact. I've had numerous lunch-table discussions about company culture ranging from the now-cliché [bashing of Silicon Valley lavishness](http://www.businessinsider.com/why-lavish-silicon-valley-perks-could-be-bad-for-workers-2013-7) to singing praises of [how awesome LinkedIn's culture is](https://www.glassdoor.com/Reviews/Employee-Review-LinkedIn-RVW5492270.htm).
 
 However, one thing I feel is almost always missing from these discussions and articles is a focus on the minutia; the minor details that really define a company's culture. We talk about culture in trendy terms like "startup culture" or "a culture of transformation" and like to equate awesome perks, such as free food, with a vibrant company.
 

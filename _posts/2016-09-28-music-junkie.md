@@ -4,6 +4,7 @@ title:  "Being A Music Junkie In Silicon Valley"
 author: "Trent Willis"
 date:   2016-09-28
 image:  "2016-09-28-music-junkie.jpg"
+excerpt: "If I had to rank my hobbies in order of time spent on them, “listening to music” would most likely be at the top, only potentially superseded by my time spent coding (especially if you count my work hours). It has been a passion of mine since middle school, but in the fast-paced, results-driven world of Silicon Valley, it is a hobby that often feels out of place."
 ---
 
 > Never could I tell you what music means to my life. It's like trying to describe a sunrise. - [Melody, Save Me](https://www.youtube.com/watch?v=DubZaMY7zL8) by [Worthwhile](https://www.facebook.com/WorthwhileBand/)

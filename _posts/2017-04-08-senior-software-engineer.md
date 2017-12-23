@@ -4,6 +4,7 @@ title:  "Discussing \"Seniority\" in Software Engineering"
 author: "Trent Willis"
 date:   2017-04-08
 image:  "2017-04-08-senior-software-engineer.jpg"
+excerpt: "Lately, I’ve noticed posts making the rounds again on what it means to be a “senior” software engineer. Most of these posts center on two things: 1. How fuzzy the definition of a “senior” software engineer is, and 2. How unlikely it is that developers in their early 20s meet that definition. Now, I’m not going to bother adding yet another definition to the mix, but instead I want to focus on the 2nd point mentioned above."
 ---
 
 Lately, I've noticed posts making the rounds again on what it means to be a "senior" software engineer. Most of these posts center on two things:

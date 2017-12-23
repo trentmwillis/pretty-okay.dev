@@ -4,6 +4,7 @@ title:  "Progressive Web Apps: Don't Throw The Baby Out With The Bathwater"
 author: "Trent Willis"
 date:   2016-05-21
 image:  "2016-05-21-pwas-and-bathwater.jpg"
+excerpt: "This past week was Google IO 2016 and while there were lots of noteworthy developments and announcements, the Mobile Web track was particularly focused on one topic: Progressive Web Apps."
 ---
 
 This past week was [Google IO 2016](https://events.google.com/io2016/) and while there were lots of noteworthy developments and announcements, the Mobile Web track was particularly focused on one topic: [Progressive Web Apps](https://developers.google.com/web/progressive-web-apps/).

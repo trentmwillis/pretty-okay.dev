@@ -5,11 +5,16 @@
 @charset "utf-8";
 
 $base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-$base-font-size:   1.125rem;
 $base-font-weight: 400;
 $base-line-height: 2;
 
-$mobile-font-size: 1rem;
+$min-font-size: 16px;
+$max-font-size: 20px;
+
+$min-viewport-width: 500px;
+$max-viewport-width: 1280px;
+
+$content-width:    42rem;
 
 $color-black:      #292929;
 $color-white:      #fff;
@@ -20,29 +25,23 @@ $color-grey-dark:  darken($color-grey, 25%);
 $color-brand:      #dc2430;
 $color-accent:     #7b4397;
 
-$content-width:    700px;
+// Sizing based on a "perfect fourth" modular scale: http://www.modularscale.com/?1&em&1.333
+$size-1:          1rem;
+$size-2:          1.333rem;
+$size-3:          1.777rem;
+$size-4:          2.369rem;
+$size-5:          3.157rem;
 
-$device-mobile:    600px;
-
-$z-title:          10;
-
-$x-small:          0.75em;
-$small:            1em;
-$medium:           1.333em;
-$large:            1.777em;
-$x-large:          2.369em;
-
-$spacing-unit:     $medium;
+$spacing-unit:    $size-2;
 
 @mixin media-query($device) {
-  @media screen and (max-width: $device) {
+  @media screen and (min-width: $device) {
     @content;
   }
 }
 
 @mixin gradient($direction) {
   background: $color-accent;
-  background: -webkit-linear-gradient($direction, $color-accent , $color-brand);
   background: linear-gradient($direction, $color-accent , $color-brand);
 }
 

@@ -4,6 +4,7 @@ title:  "On Impostor Syndrome"
 author: "Trent Willis"
 date:   2016-03-05
 image:  "2016-03-05-impostor-syndrome.jpg"
+excerpt: "With “annual review season” now almost over, I’ve been thinking a lot about impostor syndrome and the converse Dunning-Kruger effect. Having to evaluate yourself (more so than having others evaluate you) opens up an internal dialog about how competent you really believe yourself to be, which can easily lead to feeling like an impostor."
 ---
 
 > "There is no substance in what you sell and now the world will see you for who you really are, Impostor. You may have them fooled, but we can see straight through you."

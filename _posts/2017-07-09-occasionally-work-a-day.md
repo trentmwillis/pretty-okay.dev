@@ -4,6 +4,7 @@ title:  "Occasionally Work A Day"
 author: "Trent Willis"
 date:   2017-07-09
 image:  "2017-07-09-occasionally-work-a-day.jpg"
+excerpt: "“Choose a job you love, and you will never have to work a day in your life.” The quote above (often attributed to Confucius) is one that I see frequently floating around social media feeds. It resonates deeply with our desire to avoid displeasure (“work”) and find fulfillment. So, similarly to many others, it was a quote which I really appreciated as I entered the workforce a few years ago."
 ---
 
 > Choose a job you love, and you will never have to work a day in your life.

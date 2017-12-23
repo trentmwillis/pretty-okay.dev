@@ -2,7 +2,7 @@
  * Syntax highlighting styles
  */
 .highlight {
-  @extend %vertical-rhythm;
+  margin-bottom: $spacing-unit;
 
   .gl {
     padding: ($spacing-unit / 2) $spacing-unit;

@@ -4,6 +4,7 @@ title:  "QUnit-In-Browser: Lightweight End-To-End Testing"
 author: "Trent Willis"
 date:   2017-12-04
 image:  "2017-12-04-qunit-in-browser.jpg"
+excerpt: "Last week, I published the 1.0.0 release of QUnit-In-Browser and, shortly after, got the chance to discuss it briefly at dotJS. I’ve been using the package for a while now at Netflix and wanted to give a bit of background into what it is and why I’ve been working on it."
 ---
 
 Last week, I published the 1.0.0 release of [QUnit-In-Browser](https://github.com/trentmwillis/qunit-in-browser) and, shortly after, got the chance to discuss it briefly at [dotJS](https://www.dotjs.io). I've been using the package for a while now at [Netflix](https://www.netflix.com) and wanted to give a bit of background into what it is and why I've been working on it.

@@ -1,24 +1,32 @@
 ---
 layout: default
-title: "Speaking"
-nav_title: "Speaking"
+title: "<strong>Talks</strong> about internet &amp; people things."
+nav_title: "Talks"
 category: "talk"
+landing: true
 ---
 
 <section>
   <h2 class="section-header">Upcoming Talks</h2>
 
-  <ul class="post-list">
+  <ul class="post-grid">
     {% for post in site.posts %}
       {% if post.category == 'talk' and post.upcoming == true %}
-        <li class="post-item is-small">
+        <li class="post-grid-item">
           <p class="post-meta">
-            {{ post.date | date: "%b %-d, %Y" }} | {{ post.event }}
-            {% if post.info %}
-              | <a href="{{ post.info }}" target="_blank" rel="noreferrer noopener">
-                Info
+            <h2 class="post-title">
+              {{ post.event }}</a>
+            </h2>
+
+            <p class="post-meta">
+              {{ post.date | date: "%b %-d, %Y" }}
+            </p>
+
+            <p class="watch-video">
+              <a href="{{ post.info }}" target="_blank" rel="noreferrer noopener">
+                View Info
               </a>
-            {% endif %}
+            </p>
           </p>
         </li>
       {% endif %}
@@ -29,19 +37,23 @@ category: "talk"
 <section>
     <h2 class="section-header">Previous Talks</h2>
 
-  <ul class="post-list">
+  <ul class="post-grid">
     {% for post in site.posts %}
       {% if post.category == 'talk' and post.upcoming != true %}
-        <li class="post-item">
-          <p class="post-meta">
-            {{ post.date | date: "%b %-d, %Y" }} | {{ post.event }}
-          </p>
-
+        <li class="post-grid-item">
           <h2 class="post-title">
-            <a href="{{ post.video_url }}" target="_blank" rel="noreferrer noopener">{{ post.title }}</a>
+            {{ post.event }}</a>
           </h2>
 
-          <p class="post-excerpt">{{ post.description }}</p>
+          <p class="post-meta">
+            {{ post.date | date: "%b %-d, %Y" }}
+          </p>
+
+          {% if post.video_url %}
+            <p class="watch-video">
+              <a href="{{ post.video_url }}" target="_blank" rel="noreferrer noopener">Watch Video</a>
+            </p>
+          {% endif %}
         </li>
       {% endif %}
     {% endfor %}

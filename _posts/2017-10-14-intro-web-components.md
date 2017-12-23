@@ -4,6 +4,7 @@ title:  "Intro to Web Components"
 author: "Trent Willis"
 date:   2017-10-14
 image:  "2017-10-14-intro-web-components.jpg"
+excerpt: "There are lots of great and really in-depth resources on Web Components, but relatively few that cover how to dive in and connect all the disparate pieces of them. This short article will take you through developing a simple web component that uses HTML Templates, Custom Elements, and Shadow DOM as currently specified so you can begin exploring these awesome new web technologies!"
 ---
 
 There are lots of great and really in-depth resources on [Web Components](https://www.webcomponents.org/introduction), but relatively few that cover how to dive in and connect all the disparate pieces of them. This short article will take you through developing a simple web component that uses HTML Templates, Custom Elements, and Shadow DOM as currently specified so you can begin exploring these awesome new web technologies!

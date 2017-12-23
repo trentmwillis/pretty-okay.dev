@@ -4,6 +4,7 @@ title:  "Don't Ask Me Questions; Give Me Hypotheses"
 author: "Trent Willis"
 date:   2016-02-04
 image:  "2016-02-04-dont-ask-questions.jpg"
+excerpt: "I’m an introvert by nature, which means I try to limit my interactions to those that I feel are meaningful and efficient with their use of energy. Similarly, this means that interactions which I feel are inconsequential or inefficient with their use of energy tend to annoy me. In particular, I have recently spent a good deal of time thinking about my interactions related to solving problems and how to improve them. I feel that, within the realm of software engineering, those problem solving interactions too often wind up being more inefficient and wasteful than they should be."
 ---
 
 I'm an [introvert](http://g.fastcompany.net/multisite_files/cocreate/imagecache/inline-original/inline/2013/07/1683402-inline-i-how-to-interact-with-an-introvert.jpg) by nature, which means I try to limit my interactions to those that I feel are meaningful and efficient with their use of energy. Similarly, this means that interactions which I feel are inconsequential or inefficient with their use of energy tend to annoy me. In particular, I have recently spent a good deal of time thinking about my interactions related to solving problems and how to improve them. I feel that, within the realm of software engineering, those problem solving interactions too often wind up being more inefficient and wasteful than they should be.

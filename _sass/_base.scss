@@ -13,8 +13,12 @@ dl, dd, ol, ul, figure, td {
  * Basic styling
  */
 
-body {
-  font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
+html {
+  font-family: $base-font-family;
+  font-size: $min-font-size;
+  font-weight: $base-font-weight;
+  line-height: $base-line-height;
+
   color: $color-black;
   background-color: $color-white;
 
@@ -26,9 +30,15 @@ body {
   font-kerning: normal;
 }
 
-@include media-query($device-mobile) {
-  body {
-    font-size: $mobile-font-size;
+@include media-query($min-viewport-width) {
+  html {
+    font-size: calc(#{$min-font-size} + 4 * ((100vw - #{$min-viewport-width}) / 780));
+  }
+}
+
+@include media-query($max-viewport-width) {
+  html {
+    font-size: $max-font-size;
   }
 }
 
@@ -38,8 +48,7 @@ body {
 
 h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
-ul, ol, dl, figure,
-%vertical-rhythm {
+ul, ol, dl, figure, hr {
   margin-bottom: $spacing-unit;
 }
 
@@ -61,7 +70,7 @@ figure > img {
 }
 
 figcaption {
-  font-size: $x-small;
+  font-size: $size-1;
 }
 
 /**
@@ -94,10 +103,11 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-text-fill-color: transparent;
 }
 
-h1 { font-size: $x-large; }
-h2 { font-size: $large; }
-h3 { font-size: $medium; }
-h4 { font-size: $small; }
+h1 { font-size: $size-5; }
+h2 { font-size: $size-4; }
+h3 { font-size: $size-3; }
+h4 { font-size: $size-2; }
+h5 { font-size: $size-1; }
 
 /**
  * Links
@@ -109,7 +119,7 @@ a {
   transition: color 0.2s;
 
   &:hover {
-    color: darken($color-brand, 15%);
+    color: darken($color-brand, 25%);
   }
 }
 
@@ -137,7 +147,7 @@ blockquote {
 
   &:before,
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     right: 0;
@@ -192,7 +202,6 @@ pre {
  */
 
 hr {
-  margin-bottom: 1rem;
   border: none;
   height: 1px;
   width: 100%;
@@ -204,8 +213,8 @@ hr {
  */
 
 .wrapper {
-  max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-  max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+  box-sizing: border-box;
+  max-width: $content-width;
   margin-right: auto;
   margin-left: auto;
   padding-right: $spacing-unit;
