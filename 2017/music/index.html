@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Trent Willis' 2017 Music Journey</title>
+  <title>2017 Music Journey | Pretty Okay</title>
 
   <style>
     body {
@@ -45,6 +45,12 @@
       letter-spacing: 2px;
       margin: 2rem 0;
       text-align: left;
+    }
+
+    .banner-byline a {
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid white;
     }
 
     .banner-description {
@@ -109,9 +115,7 @@
       grid-template-columns: 1fr 1fr;
       margin: 0 auto;
       max-width: 1080px;
-      min-height: 100vh;
-      padding: 1rem;
-      padding-top: 50vw;
+      padding-top: 66vw;
       position: relative;
     }
 
@@ -136,6 +140,7 @@
     }
 
     .controls {
+      background: black;
       grid-column: 1/3;
       grid-row: 3;
       text-align: center;
@@ -166,19 +171,43 @@
       animation: pulse 2s infinite;
       background-color: rgba(123, 67, 151, 0.8);
       border: none;
-      border-radius: 4px;
       color: white;
       cursor: pointer;
-      font-size: 3rem;
       height: 5rem;
       margin: 2rem 0px;
+      overflow: hidden;
       padding: 0;
-      transition: background-color 0.3s, color 0.3s;
+      position: relative;
+      text-indent: 9999px;
+      transition: background-color 0.3s;
       width: 100%;
+    }
+
+    .play::after {
+      content: '';
+      position: absolute;
+      border-style: solid;
+      border-width: 1rem 0 1rem 1.5rem;
+      border-color: transparent transparent transparent white;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
 
     .pause {
       animation: none;
+    }
+
+    .pause::after {
+      content: '';
+      position: absolute;
+      border-style: solid;
+      border-width: 1rem;
+      border-color: white;
+      border-radius: 3px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
 
     .play:hover,
@@ -230,7 +259,8 @@
     @media (min-width: 700px) {
       .entry-content {
         grid-gap: 1rem;
-        padding-top: 1rem;
+        min-height: 100vh;
+        padding: 1rem;
       }
 
       .entry header {
@@ -243,6 +273,7 @@
       }
 
       .controls {
+        background: transparent;
         grid-column: 2;
         grid-row: 1;
       }
@@ -287,12 +318,12 @@
   <header class="banner">
     <div class="banner-inner">
       <h1 class="banner-title">2017<br>Music<br>Journey</h1>
-      <p class="banner-byline">by @trentmwillis</p>
+      <p class="banner-byline">by <a href="/about">Trent Willis</a></p>
       <p class="banner-description">
           Every year I like to reflect on the music that was the most impactful to me. I used to do this by picking an "album of the year".
           <br>
           <br>
-          Several years ago, however, I realized that trying to pick an "album of the year" or a list of the "best" albums led me to write and reflect on the albums that I thought others would approve of, and not necessarily the albums that actually played a large role in my life during the year.
+          Several years ago, however, I realized that trying to pick an "album of the year" or a list of the "best" albums led me to write and reflect on the albums that I thought were musically "good" or relevant to the alternative music scene, and not necessarily the albums that played an important role in my life that year.
           <br>
           <br>
           So, for the past few years, I have put together "music journeys" instead; lists of songs from various albums that I listened to a lot over the course of the year. I arrange the songs chronologically by when they entered my library, so the only reflection that has to happen is whether I thought the song was important to me and when I started listening to it.
@@ -315,8 +346,8 @@
         </header>
 
         <div class="controls">
-          <button class="play" data-youtube-id="{{youtubeId}}">&#x25b6;&#xFE0E;</button>
-          <button class="pause" style="display: none">&#9632;</button>
+          <button class="play" data-youtube-id="{{youtubeId}}">Play</button>
+          <button class="pause" style="display: none">Pause</button>
         </div>
 
         <section>{{review}}</section>
@@ -370,126 +401,143 @@
 
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const monthToString = month => months[month - 1];
-    const hyphenate = str => str.toLowerCase().split(' ').join('-').replace(/\!|'|:/g, '');
+    const hyphenate = str => str.toLowerCase().split(' ').join('-').replace(/\!|'|:|\//g, '');
     const songInfo = [
       {
         date: "011317",
         album: "Forever",
         artist: "Code Orange",
         song: "The New Reality",
-        youtubeId: "dZ9JVxQVQy4"
+        youtubeId: "dZ9JVxQVQy4",
+        review: "The year kicked off in a big way with Code Orange releasing what would become a Grammy-nominated album. I had been excited for this album since I heard it announced, as I loved their previous record, I Am King. The album's opener and title track, is a perfect example of the band's dark and industrial blend of metal and hardcore. I don't think a single week went by this year where I did not listen to the majority of this album."
       },
       {
         date: "012317",
         album: "Pain & Suffering",
         artist: "Advent",
         song: "Weight of the World",
-        youtubeId: "tJJHz-WE3Ao"
+        youtubeId: "tJJHz-WE3Ao",
+        review: "Advent's last album was released in 2009 which is more than the lifetime of most hardcore bands. So, when the band announced they would be releasing a new album last year, I was shocked to say the least. To say Advent are underrated would be a gross understatement; the band plays some of the most relentless, but quality, hardcore music I know of and yet they remain virtually unknown."
       },
       {
         date: "021817",
         album: "The Rhapsody Tapes",
         artist: "Ocean Grove",
         song: "Intimate Alien",
-        youtubeId: "T2LO5FyASDU"
+        youtubeId: "T2LO5FyASDU",
+        review: "Ocean Grove is an odd band. In fact, they even refer to their music as \"odd world music\", which amounts to a mixture of nu-metal, metalcore, and whatever else they feel like throwing in. They also lean heavily into a Mad Max aesthetic. Overall, while this never quite made it into heavy rotation, some of the songs, such as Intimate Alien, I have repeatedly come back to over the course of the year."
       },
       {
         date: "050517",
         album: "Thousand Mile Stare",
         artist: "Incendiary",
         song: "Front Toward Enemy",
-        youtubeId: "H5FBvGpgGWg"
+        youtubeId: "H5FBvGpgGWg",
+        review: "I'm fairly sure I listened to this entire album somewhere near 30 times in the first week I picked it up. While it didn't really push the boundaries of the genre much, Incendiary are, in my opinion, the current kings of New York hardcore. It is political, hard, and unapologetic. No blast beats or screaming here, just straight-up hardcore."
       },
       {
         date: "050517",
         album: "Reclaimer",
         artist: "Shadow of Intent",
         song: "The Horror Within",
-        youtubeId: "qhuu0PIB8A0"
+        youtubeId: "qhuu0PIB8A0",
+        review: "I won't lie, I rarely listen to this entire song, but The Horror Within just has some insanely catchy guitar riffs and has everything a good deathcore song should: breakdowns, blast beats, and some solid grooves."
       },
       {
         date: "051417",
         album: "Cold",
         artist: "Gideon",
         song: "Champions",
-        youtubeId: "y0ZIj27Km3U"
+        youtubeId: "y0ZIj27Km3U",
+        review: "Gideon's Milestone was one of the first albums that got me into the more \"hardcore\" side of metalcore. So it was a big disappointment to me when their last album just never really clicked with my tastes. That said, I didn't give up and gave Cold a listen when it finally released. This album finds the perfect spot between their original metallic hardcore sound and their more recent nu-metalcore sound. The lead single, Champions, I felt exemplified this. Seeing them play it live at Facedown Fest this year reminded me of why I enjoyed the band in the first place."
       },
       {
         date: "051717",
         album: "Two Parts Viper",
         artist: "'68",
         song: "Whether Terrified Or Unafraid",
-        youtubeId: "3nOic5O6qvE"
+        youtubeId: "3nOic5O6qvE",
+        review: "I have an odd relationship with '68. I enjoy and appreciate their music, but I have to be in a particular mood to want to listen to it. When Two Parts Viper dropped, it was probably several months before I made it past the first few tracks. Thankfully, those first few tracks are gold. Whether Terrified Or Unafraid is one of the best examples of the myriad aspects of this band's sound. It's raw-sounding rock that has an experimental yet restrained feeling to it. Oh, and it's a blast to hear live."
       },
       {
         date: "052217",
         album: "Self Supremacy",
         artist: "Malevolence",
         song: "Self Supremacy",
-        youtubeId: "E069_0MShkI"
+        youtubeId: "E069_0MShkI",
+        review: "Malevolence is a band that I had not heard of until Code Orange took them on tour this year. I am so glad they did. The band's fusion of beatdown hardcore and metal with some southern rock influences was something I would have never expected from a European band, but it is money. The album is relentlessly hard and heavy with a load of groovy riffs and breakdowns."
       },
       {
         date: "052717",
         album: "LA Divine",
         artist: "Cold War Kids",
         song: "Restless",
-        youtubeId: "dd8-wjXIoVo"
+        youtubeId: "dd8-wjXIoVo",
+        review: "This album stands out for me this year, because it is so poppy. Cold War Kids' album Robbers & Cowards is one of my favorite albums of all time, but sadly they haven't ever released anything else that stuck with me over the years. L.A. Divine might change that. While it is a huge departure from Robbers & Cowards, I felt that the album was more inviting and less derivative than their other recent work. While it is definitely more commercialized, that isn't always a bad thing. Plus, it's just so much fun to singalong to."
       },
       {
         date: "052817",
         album: "Surprise!",
         artist: "Mystery Weekend",
         song: "Everyone's A Liar",
-        youtubeId: "a1MKhpxbhrg"
+        youtubeId: "a1MKhpxbhrg",
+        review: "I've listened to this whole album probably hundreds of times this year. The lyrics hit that rare blend of catchy, relatable and slightly humorous at points. The music is pretty solid (pop-)punk as well and fronted by the singer from Protest The Hero, whose voice I love. All-in-all, this is just a fantastically enjoyable and pretty unknown album that has made my commute better on many occassions."
       },
       {
         date: "060317",
         album: "Ark",
         artist: "In Hearts Wake",
         song: "Nomad",
-        youtubeId: "XKaS-TM1gUc"
+        youtubeId: "XKaS-TM1gUc",
+        review: "This album had so much hype that I had to check it out. This song is loads of fun with lots of breakdowns and a catchy chorus. The music video in particular stood out because it hits on an issue that is important to me and my wife: girls in the hardcore/metal scene. It is refreshing to see a prominent band in the scene promoting and encouraging crowd paticipation from women. Because of this, plus the insane catchiness, this song has been a frequent jam for me and my wife."
       },
       {
         date: "060817",
         album: "Different Animals",
         artist: "Volumes",
         song: "Finite",
-        youtubeId: "9ag2RyDdBWU"
+        youtubeId: "9ag2RyDdBWU",
+        review: "After seeing Volumes last year and the ridiculous amount of crowd participation, I made sure to check out their new album this year. Different Animals is a super enjoyable ride of djent-y nu-metal that is leaps ahead of their previous work in terms of production quality. So when we got to see them again this year with Issues, I was super pumped and it turned out to be one of the most memorable shows of the year."
       },
       {
         date: "061317",
         album: "Fantasy",
         artist: "Eternity Forever",
         song: "Movies",
-        youtubeId: "1T_aVdFfH3Q"
+        youtubeId: "1T_aVdFfH3Q",
+        review: "Every now and then I go on a prog music bender. This year, it started with this phenomenal EP by Eternity Forever, who are essentially a supergroup of members from Dance Gavin Dance, Strawberry Girls, and CHON. The music is a soulful blend of prog and indie rock that really evokes memories of driving down the California coast or relaxing days at the beach. While the EP is rather short, it feels totally fine to just put it on repeat for long stretches of time."
       },
       {
         date: "061317",
         album: "Senpai EP II: The Noticing",
         artist: "Sithu Aye",
         song: "Summer Break!",
-        youtubeId: "ftf961GlTbw"
+        youtubeId: "ftf961GlTbw",
+        review: "Continuing into my prog rock bender, this album came as a complete surprise to me. I discovered it via a YouTube recommendation and am super glad it popped up. The album is a collection of really great instrumental music that manages to uses common melodies and motifs from anime soundtracks. Not to mention the title of the EP is hilarious. All-in-all, this spoke to me on multiple levels, as a music lover, as an anime nerd, and as a fan of corny internet jokes."
       },
       {
         date: "061617",
         album: "Homey",
         artist: "Chon",
         song: "Nayhoo",
-        youtubeId: "nPXPURGP-6k"
+        youtubeId: "nPXPURGP-6k",
+        review: "Take everything I said about Fantasy by Eternity Forever and add some electronic and SoCal influence and you have Homey. The album is amazingly chill."
       },
       {
         date: "061617",
         album: "The Place I Feel Safest",
         artist: "Currents",
         song: "Forget Me",
-        youtubeId: "ppO1TXmfpeA"
+        youtubeId: "ppO1TXmfpeA",
+        review: "Metalcore with deathcore tendencies is how I would describe Currents. Their music is way more polished and accessible than most deathcore bands out there, but they still manage to keep it heavy and musically in realms that most metalcore bands won't venture. The lyrics are also really compelling at moments and I find myself often singing along to the songs as they play. I was interested in the album before it came out, super stoked once I got to listen to it, and now firmly can say that this was a big part of music for me this year."
       },
       {
         date: "080717",
         album: "Pain Again",
         artist: "Varials",
         song: "E.D.A.",
-        youtubeId: "XAm064U4Czk"
+        youtubeId: "XAm064U4Czk",
+        review: "I started listening to Varials sometime last year and immediately knew I loved their music. The band's sound is heavy as hell but with some really nice grooves to it as well; they fit into that niche of metalcore that takes cues from the beatdown scene, ala Kublai Khan or Knocked Loose, but still their own. Seeing them earlier this year with Wage War and Gideon was a treat as they were one of the few bands I've seen who will still get down in the pit and bang their heads to the other bands that performed that night."
       },
       {
         date: "080917",
@@ -504,28 +552,32 @@
         album: "Dear Desolation",
         artist: "Thy Art is Murder",
         song: "Slaves Beyond Death",
-        youtubeId: "yvPK0qKB8m4"
+        youtubeId: "yvPK0qKB8m4",
+        review: "The most brutal song on this list? Very likely this one. I like a handful of Thy Art Is Murder's songs and this just happened to be one of them. The opening of Slaves Beyond Death just caught my ear instantly and the vocal and riffy interplay is interesting enough to have me capture for the length of the song. There were a few other gems on Dear Desolation that made it a worthwhile download and as a result, my year wouldn't be complete without mentioning it."
       },
       {
         date: "080917",
         album: "Freedom",
         artist: "Crossfaith",
         song: "Freedom",
-        youtubeId: "VYWbnIPbnJo"
+        youtubeId: "VYWbnIPbnJo",
+        review: "I've been a big fan of Crossfaith for a long time now (since MySpace days) and yet they had fallen out of my rotation in the past year. But, with their new EP, that changed. At only 3 songs long, the EP still had a lot of variety and the title track, Freedom, exemplified it the most. The song epitomizes most of the aspects of the band's sound that I love with the addition of Rou Reynold's from Enter Shikari doing a gust spot. It's phenomenal, even if it comes across as a bit cliche during Rou's rap."
       },
       {
         date: "080917",
         album: "Always Lose",
         artist: "The Gospel Youth",
         song: "Moods Like English Weather",
-        youtubeId: "EgMKWRmNT0g"
+        youtubeId: "EgMKWRmNT0g",
+        review: "I first listened to The Gospel Youth the week before going to Warped Tour. I had decided to check out other bands on the Pure Noise roster and this song caught my attention. The band's emo-leaning alt-rock sound appealed to my mid-2000's nostalgia and got me hooked. After catching a brief portion of their set at Warped, I knew I had to download the album and subsequently learned virtually every lyric on it. It's just so good."
       },
       {
         date: "090617",
         album: "From the Unforgiving Arms of God",
         artist: "END",
         song: "Usurper",
-        youtubeId: "suUXNYGdjdo"
+        youtubeId: "suUXNYGdjdo",
+        review: "This album is blistering. I went into it knowing next to nothing about the band and was pleasantly surprised. The hardcore style is closer to Advent than anything else on this list, but still different, in large part due to Brendan Murphy's vocal delivery. While just an EP, almost every song from the record has seen significant play time from me for the last several months."
       },
       {
         date: "090917",
@@ -598,6 +650,22 @@
         song: "Wasted Age",
         youtubeId: "Elddy5PYe5w",
         review: "The first album by We Came As Romans was a big part of my senior (?) year of high school. So, it was always unfortunate that the bands albums since then didn't really ever catch my interest. Cold Like War, however, changed that. It has the same sort of blend of heavy, catchy, and unique that To Plant A Seed had without sounding they're just doing the same thing. Wasted Age in particular I feel represents how the band has evolved, yet still has many of the same elements that caused me to fall in love with the first album."
+      },
+      {
+        date: "121417",
+        album: "Unfamiliar",
+        artist: "In Her Own Words",
+        song: "Right Now",
+        youtubeId: "fABLJaaTWUQ",
+        review: "As with Movements, I hadn't really given In Her Own Words a chance until seeing them perform at Worthwhile's  farewell show. This song is technically off the deluxe edition release of Unfamiliar, but I think it is the best song on the album. It doesn't push any genre boundaries; it is simply catchy and slightly angsty pop-punk. While this was a late addition to my music collection this year, I already know most of the words to many songs on the album which means it will likely be getting play time well into the New Year."
+      },
+      {
+        date: "122617",
+        album: "A / The Sound Of Breath",
+        artist: "SiM",
+        song: "A",
+        youtubeId: "hdf7gIW_hls",
+        review: "Capping off my year with SiM feels fitting. I have long been a fan of this very unique Japanese band that aggressively blends a myriad of genres spanning punk to dub and their latest 2-song EP is no different. For a year that had a lot of change and turmoil, this song feels about how 2017 felt for myself personally. Crazy, a bit disorderly, but overall enjoyable."
       }
     ].map(song => {
       const month = parseInt(song.date.substr(0, 2), 10);
