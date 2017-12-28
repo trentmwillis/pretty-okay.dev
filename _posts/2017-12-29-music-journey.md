@@ -16,3 +16,5 @@ So, for the past few years, I have put together "music journeys" instead; lists 
 This is my first year sharing one of these lists and I hope you enjoy the peek into my life and what music has been important to me this year.
 
 <h2 class="section-header"><a href="/2017/music">View the music journey here</a></h2>
+
+(P.S., there is [a playlist of the music journey on YouTube](https://www.youtube.com/playlist?list=PL3ERQ3gdHNDwdi23HvpDpToBMGI1SnPUe).)
