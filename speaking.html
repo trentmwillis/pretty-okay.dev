@@ -10,7 +10,7 @@ landing: true
   <h2 class="section-header">Upcoming Talks</h2>
 
   <ul class="post-grid">
-    {% for post in site.posts %}
+    {% for post in site.posts reversed %}
       {% if post.category == 'talk' and post.upcoming == true %}
         <li class="post-grid-item">
           <p class="post-meta">
