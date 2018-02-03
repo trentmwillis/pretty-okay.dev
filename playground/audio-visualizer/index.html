@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Audio Visualizer Custom Element</title>
+
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .is-hidden {
+        display: none;
+      }
+
+      input[type="file"] {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+      }
+
+      label {
+        font-family: sans-serif;
+        position: fixed;
+        z-index: 1;
+        color: #000;
+        background: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 3px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        box-shadow: 0px 0px 1rem #000;
+        transition: box-shadow 0.3s;
+      }
+
+      label:hover,
+      input[type="file"]:focus + label {
+        box-shadow: 0px 0px 1rem #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input type="file" id="song-input" accept="audio/*">
+    <label for="song-input" id="song-input-label">Upload a song</label>
+
+    <audio-visualizer id="visualizer"></audio-visualizer>
+
+    <script src="./bound-template.js"></script>
+    <script>
+      (function() {
+        const songInput = document.getElementById('song-input');
+        const songInputLabel = document.getElementById('song-input-label');
+        const audioVisualizer = document.getElementById('visualizer');
+
+        songInput.addEventListener('change', function() {
+          const files = this.files;
+          const songFile = files[0];
+          const songUrl = URL.createObjectURL(files[0]);
+
+          audioVisualizer.setAttribute('song-url', songUrl);
+
+          songInput.classList.add('is-hidden');
+          songInputLabel.classList.add('is-hidden');
+        });
+      }());
+    </script>
+
+    <template id="audio-visualizer-template">
+      <style>
+        :host {
+          display: block;
+          position: relative;
+        }
+
+        audio {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        canvas {
+          display: block;
+          width: 100%;
+          height: 100vh;
+          background: #000;
+        }
+      </style>
+
+      <audio></audio>
+      <canvas></canvas>
+    </template>
+
+    <script>
+      class AudioVisualizer extends HTMLElement {
+        constructor() {
+          super();
+
+          const templateElement = document.getElementById('audio-visualizer-template');
+          const boundTemplate = new BoundTemplate(templateElement);
+          const [template, props] = boundTemplate.create();
+
+          this.props = props;
+
+          this.attachShadow({ mode: 'open' });
+          this.shadowRoot.appendChild(template);
+
+          this.audio = this.shadowRoot.querySelector('audio');
+          this.canvas = this.shadowRoot.querySelector('canvas');
+        }
+
+        static get observedAttributes() {
+          return [
+            'song-url'
+          ];
+        }
+
+        attributeChangedCallback(attr, oldValue, newValue) {
+          if (attr === 'song-url') {
+            this.audio.src = newValue;
+            this.audio.load();
+            this.audio.play();
+
+            const context = new AudioContext();
+            const src = context.createMediaElementSource(this.audio);
+            this.analyser = context.createAnalyser();
+
+            this.canvas.width = window.innerWidth;
+            this.canvas.height = window.innerHeight;
+            this.canvasContext = this.canvas.getContext("2d");
+
+            src.connect(this.analyser);
+            this.analyser.connect(context.destination);
+            // this.analyser.fftSize = 128;
+
+            this.renderVisualization();
+          }
+        }
+
+        renderVisualization() {
+          const bufferLength = this.analyser.frequencyBinCount;
+          const frequencyData = new Uint8Array(bufferLength);
+          const domainData = new Uint8Array(bufferLength);
+
+          const WIDTH = this.canvas.width;
+          const HEIGHT = this.canvas.height;
+
+          const barWidth = (WIDTH / bufferLength);
+
+          const draw = (data, color) => {
+            const points = new Array(data.length);
+            for (let index = 0; index < data.length; index++) {
+              points[index] = {
+                x: index * barWidth,
+                y: HEIGHT - (((data[index] / 256) * (HEIGHT / 2)) + (HEIGHT / 4))
+              };
+            }
+
+            this.canvasContext.beginPath();
+            this.canvasContext.moveTo(points[0].x, points[0].y);
+
+            for (let i = 1; i < points.length; i++) {
+              const currentPoint = points[i];
+              this.canvasContext.lineTo(currentPoint.x, currentPoint.y)
+            }
+
+            const gradient = this.canvasContext.createLinearGradient(0, 0, 0, HEIGHT);
+            gradient.addColorStop(0, color);
+            gradient.addColorStop(1, '#000');
+
+            this.canvasContext.strokeStyle = gradient;
+            this.canvasContext.stroke();
+          };
+
+          const innerRenderVisualization = () => {
+            requestAnimationFrame(innerRenderVisualization);
+
+            this.canvasContext.clearRect(0, 0, WIDTH, HEIGHT);
+
+            this.analyser.getByteFrequencyData(frequencyData);
+
+            const points = new Array(frequencyData.length);
+            for (let index = 0; index < frequencyData.length; index++) {
+              points[index] = {
+                x: index * barWidth,
+                y1: HEIGHT - (((frequencyData[index] / 256) * (HEIGHT / 2)) + (HEIGHT / 2)),
+                y2: ((frequencyData[index] / 256) * (HEIGHT / 2)) + (HEIGHT / 2)
+              };
+            }
+
+            this.canvasContext.beginPath();
+            this.canvasContext.moveTo(points[0].x, points[0].y1);
+
+            for (let i = 1; i < points.length; i++) {
+              const currentPoint = points[i];
+              this.canvasContext.lineTo(currentPoint.x, currentPoint.y1)
+            }
+
+            this.canvasContext.lineTo(WIDTH, HEIGHT / 2);
+            this.canvasContext.lineTo(0, HEIGHT / 2);
+
+            const gradient = this.canvasContext.createLinearGradient(0, 0, 0, HEIGHT);
+            gradient.addColorStop(0, '#e93f33');
+            gradient.addColorStop(1, '#000');
+
+            this.canvasContext.fillStyle = gradient;
+            this.canvasContext.fill();
+
+
+
+            this.canvasContext.beginPath();
+            this.canvasContext.moveTo(points[0].x, points[0].y2);
+
+            for (let i = 1; i < points.length; i++) {
+              const currentPoint = points[i];
+              this.canvasContext.lineTo(currentPoint.x, currentPoint.y2)
+            }
+
+            this.canvasContext.lineTo(WIDTH, HEIGHT / 2);
+            this.canvasContext.lineTo(0, HEIGHT / 2);
+
+            this.canvasContext.fill();
+
+            this.analyser.getByteTimeDomainData(domainData);
+            draw(domainData, '#33E97E');
+          };
+
+          this.audio.play();
+          innerRenderVisualization();
+        }
+      }
+
+      customElements.define('audio-visualizer', AudioVisualizer);
+    </script>
+
+  </body>
+</html>
