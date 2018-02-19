@@ -49,11 +49,15 @@ landing: true
             {{ post.date | date: "%b %-d, %Y" }}
           </p>
 
-          {% if post.video_url %}
-            <p class="watch-video">
+          <p class="watch-video">
+            {% if post.video_url %}
               <a href="{{ post.video_url }}" target="_blank" rel="noreferrer noopener">Watch Video</a>
-            </p>
-          {% endif %}
+            {% elsif post.audio_url %}
+              <a href="{{ post.audio_url }}" target="_blank" rel="noreferrer noopener">Listen to Recording</a>
+            {% elsif post.info %}
+              <a href="{{ post.info }}" target="_blank" rel="noreferrer noopener">View Info</a>
+            {% endif %}
+          </p>
         </li>
       {% endif %}
     {% endfor %}
