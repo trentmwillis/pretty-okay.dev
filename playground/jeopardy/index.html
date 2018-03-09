@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>Web Jeopardy!</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      background-color: black;
+      color: white;
+      display: grid;
+      font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-auto-flow: column;
+      margin: 0;
+    }
+
+    .header,
+    .question {
+      padding: 1rem;
+      background: blue;
+      border: 0.5rem solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 1rem;
+    }
+
+    .header {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .question {
+      cursor: pointer;
+      font-size: 2rem;
+      color: yellow;
+      transition: background-color 0.25s;
+    }
+
+    .question:not(.is-answered):not(.is-active):hover {
+      background-color: rgba(0, 0, 255, 0.75);
+    }
+
+    .question.is-answered {
+      cursor: initial;
+      background-color: rgba(0, 0, 255, 0.5);
+    }
+
+    #prompt {
+      position: fixed;
+      top: 100%;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background: blue;
+      font-size: 6rem;
+      padding: 1em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: yellow;
+      transition: 0.5s top;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    #prompt.is-active {
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">CSS is "Easy"</div>
+  <div class="question" data-clue="The specificity of the `:not()` selector is this" data-answer="0">200</div>
+  <div class="question" data-clue="This property provides a way to provide hints to the browser about the changes that an element will experience" data-answer="will-change">400</div>
+  <div class="question" data-clue="A homonym in pronounciation for a cereal with a frog mascot, this is the name of a popular CSS architecture" data-answer="SMACSS">600</div>
+  <div class="question" data-clue='This CSS preprocessor "acts like a polyfill for future CSS"' data-answer="Myth">800</div>
+  <div class="question" data-clue="This W3C initiative aims to define lower-level APIs for developers to extend CSS behavior in the browser" data-answer="Houdini">1000</div>
+
+  <div class="header">JavaScript Makes Sense</div>
+  <div class="question" data-clue="The only JavaScript construct to not be equal to itself is this" data-answer="NaN">200</div>
+  <div class="question" data-clue="This is the result of `{} + []`" data-answer="0">400</div>
+  <div class="question" data-clue="The global `document.all` has this type" data-answer="undefined">600</div>
+  <div class="question" data-clue="The smallest number of unique characters in JS needed to write any program is this" data-answer="6">800</div>
+  <div class="question" data-clue='Often used to describe cats, this word has been proposed as an alternative to "flatten"' data-answer="Smoosh">1000</div>
+
+  <div class="header">That's Not A Programming Language</div>
+  <div class="question" data-clue="An element representing a position within text where a browser may break the line is this" data-answer="<wbr>">200</div>
+  <div class="question" data-clue="Prior to HTML5 this element had semantic meaning, now it does not" data-answer="<b>">400</div>
+  <div class="question" data-clue="This attribute lets assitive technologies know that the element's content will dynamically change" data-answer="aria-live">600</div>
+  <div class="question" data-clue="This element overrides the current direction of text so that it is rendered in the opposite direction" data-answer="<bdo>">800</div>
+  <div class="question" data-clue="Originally included in early drafts of HTML5, this attribute allows an anchor tag to notify a url when it has been clicked" data-answer="ping">1000</div>
+
+  <div class="header">The Answer Is Not React</div>
+  <div class="question" data-clue="This framework is a smaller React with a longer name" data-answer="Preact">200</div>
+  <div class="question" data-clue="PlayStation Now, Apple Music, and the Xbox One Store all use this framework" data-answer="Ember">400</div>
+  <div class="question" data-clue="This full-stack framework was originally known as Skybreak" data-answer="Meteor">600</div>
+  <div class="question" data-clue='The "magical, disappearing UI framework" is this' data-answer="Svelte">800</div>
+  <div class="question" data-clue='While not actually a framework, this "library that acts like a framework" was created by a Netflix engineer' data-answer="diffHTML">1000</div>
+
+  <div class="header">Tim Berners-Lee Would Know</div>
+  <div class="question" data-clue="This is the official standard defining ECMAScript" data-answer="ECMA-262">200</div>
+  <div class="question" data-clue="The term AJAX was coined in this year" data-answer="2005">400</div>
+  <div class="question" data-clue="The original design of HTML was comprised of this number of elements" data-answer="18">600</div>
+  <div class="question" data-clue="This was the first mobile browser and was used on PDAs" data-answer="PocketWeb">800</div>
+  <div class="question" data-clue="Written in 1980, this project was the predecessor to the World Wide Web" data-answer="ENQUIRE">1000</div>
+
+  <div id="prompt"></div>
+
+  <script>
+    const isAQuestion = element => element.classList.contains('question');
+    const isAnswered = element => element.classList.contains('is-answered');
+    const prompt = document.getElementById('prompt');
+
+    const handleClick = (event) => {
+      const target = event.target;
+      if (isAQuestion(target) && !isAnswered(target)) {
+        target.classList.add('is-active');
+        prompt.classList.add('is-active');
+        prompt.innerText = target.dataset.clue;
+      } else if (target === prompt) {
+        const activeQuestion = document.querySelector('.question.is-active');
+        prompt.classList.remove('is-active');
+        activeQuestion.classList.remove('is-active');
+        activeQuestion.classList.add('is-answered');
+        activeQuestion.innerText = activeQuestion.dataset.answer;
+      }
+    };
+
+    document.body.addEventListener('click', handleClick);
+  </script>
+</body>
+</html>
