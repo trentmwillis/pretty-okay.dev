@@ -11,7 +11,6 @@ email: trent@pretty-okay.com
 description: The personal website of Trent Willis, a maker of internet things. Blogging and speaking about the tech industry, web development, and living in Silicon Valley.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://pretty-okay.com" # the base hostname & protocol for your site
-enforce_ssl: "pretty-okay.com"
 twitter_username: trentmwillis
 github_username: trentmwillis
 
