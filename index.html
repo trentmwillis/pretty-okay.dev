@@ -14,7 +14,7 @@ landing: true
         </h2>
 
         <p class="post-meta">
-          {{ post.date | date: "%b %-d, %Y" }} | <a href="{{ post.id | prepend: site.baseurl }}#disqus_thread" data-disqus-identifier="{{ post.id }}">0 Comments</a>
+          {{ post.date | date: "%b %-d, %Y" }}
         </p>
 
         <p class="post-excerpt">
@@ -28,5 +28,3 @@ landing: true
     {% endunless %}
   {% endfor %}
 </ul>
-
-<script id="dsq-count-scr" src="//pretty-okay.disqus.com/count.js" async></script>

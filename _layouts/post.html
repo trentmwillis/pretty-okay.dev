@@ -21,16 +21,10 @@ layout: default
       {% if site.twitter_username %}
         {% include icon-twitter.html username=site.twitter_username %}
       {% endif %}
-
-      | <a href="#disqus_thread" data-disqus-identifier="{{ page.id }}">0 Comments</a>
     </p>
   </header>
 
   <div class="article-content" itemprop="articleBody">
     {{ content }}
   </div>
-
-  <footer class="article-footer">
-    {% include disqus.html %}
-  </footer>
 </article>
