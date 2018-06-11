@@ -8,7 +8,7 @@ self.addEventListener('fetch', (event) => {
 
 });
 
-const shouldCache = async (request) => {
+const shouldCache = (request) => {
 
     // Cache page HTML or any requests from our page
     return request.mode === 'navigate' || (request.method === 'GET' && request.url.startsWith(location.origin));
