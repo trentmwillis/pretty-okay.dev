@@ -1,17 +1,47 @@
 self.addEventListener('fetch', (event) => {
 
-    if (shouldCache(event.request)) {
 
-        event.respondWith(staleWhileRevalidate(event));
+    const method = howToHandle(event.request);
+    if (method) {
+
+        event.respondWith(method(event));
 
     }
 
 });
 
-const shouldCache = (request) => {
+const howToHandle = (request) => {
 
-    // Cache page HTML or any requests from our page
-    return request.mode === 'navigate' || (request.method === 'GET' && request.url.startsWith(location.origin));
+    if (request.mode === 'navigate') {
+
+        return networkThenCache;
+
+    } else if (request.method === 'GET' && request.url.startsWith(location.origin)) {
+
+        return staleWhileRevalidate;
+
+    }
+
+};
+
+/**
+ * Returns a fresh version of a resource. If the fetch fails, it'll return a
+ * cached value if possible. It will also update the cache once the fetch is
+ * completed.
+ */
+const networkThenCache = async (event) => {
+
+    const normalizedUrl = new URL(event.request.url);
+    normalizedUrl.search = '';
+    normalizedUrl.hash = '';
+
+    const resourcePromise = fetch(normalizedUrl);
+
+    event.waitUntil(updateCacheAfter(resourcePromise, normalizedUrl));
+
+    return resourcePromise
+        .then(response => response.clone())
+        .catch(() => caches.match(normalizedUrl));
 
 };
 
