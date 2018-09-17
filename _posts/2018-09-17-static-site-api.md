@@ -141,7 +141,7 @@ Oh and make sure you close down the browser! You don't want a bunch of stray Chr
 
 And that about wraps it up! Aside from the bit about the navigation and understanding `$`, it's a relatively straightforward implementation that lets us build an API for accessing a static site. Instead of having to completely rearchitect my blog, I can stand up this little Node server to make accessing my blog's content easy!
 
-You can view a working demo of this on Glitch at [static-site-api.glitch.me](https://static-site-api.glitch.me/) or, alternatively, you can view the entire source code as a single file below.
+You can view a working demo of this on Glitch at [static-site-api.glitch.me](https://static-site-api.glitch.me/) or, alternatively, you can view the entire source code in the snippet below.
 
 <div class="collapsible">
 {% highlight javascript linenos %}

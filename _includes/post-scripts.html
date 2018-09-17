@@ -1,0 +1,31 @@
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    let collapsibleId = 0;
+
+    const toggler = (element) => (event) => {
+      const target = event.target;
+      const isExpanded = target.getAttribute('aria-expanded') === 'true';
+      element.setAttribute('aria-hidden', isExpanded);
+      target.setAttribute('aria-expanded', !isExpanded);
+      target.textContent = isExpanded ? 'Expand Snippet' : 'Collapse Snippet';
+    };
+
+    const registerCollapsibleElement = (element) => {
+      const id = `collapsible-${++collapsibleId}`;
+      const toggleButton = document.createElement('button');
+      toggleButton.textContent = 'Expand Snippet';
+      toggleButton.classList.add('collapsible-toggle');
+      toggleButton.addEventListener('click', toggler(element));
+      toggleButton.setAttribute('aria-expanded', false);
+      toggleButton.setAttribute('aria-controls', id);
+
+      element.id = id;
+      element.setAttribute('aria-hidden', true);
+
+      element.parentElement.insertBefore(toggleButton, element);
+    };
+
+    const collapsibleElements = [...document.querySelectorAll('.collapsible')];
+    collapsibleElements.forEach(registerCollapsibleElement);
+  });
+</script>
