@@ -18,7 +18,13 @@ const howToHandle = (request) => {
 
     } else if (request.method === 'GET' && request.url.startsWith(location.origin)) {
 
-        return staleWhileRevalidate;
+        if (request.url.endsWith('.jpg')) {
+
+            return staleWhileRevalidate;
+
+        }
+
+        return networkThenCache;
 
     }
 
