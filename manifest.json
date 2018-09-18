@@ -1,4 +1,11 @@
+---
+---
 {
-  "short_name": "Pretty Okay",
-  "name": "Pretty Okay"
+  "short_name": "{{ site.title }}",
+  "name": "{{ site.title }}",
+  "description": "{{ site.description }}",
+  "display": "minimal-ui",
+  "background_color": "#fff",
+  "theme_color": "#dc2430",
+  "start_url": "/"
 }
