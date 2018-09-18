@@ -7,6 +7,7 @@
   <title>{% if page.nav_title %}{{ page.nav_title }}{% else %}{{ page.title }}{% endif %} | {{ site.title }}</title>
 
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="theme-color" content="#dc2430">
 
   <meta property="og:image" content="{%if page.image %}{{ page.image | prepend: '/assets/images/' | prepend: site.baseurl | prepend: site.url }}{% else %}{{ "/assets/site-logo.png" | prepend: site.baseurl | prepend: site.url }}{% endif %}">
   <meta property="og:title" content="{{ page.title | strip_html }}">
