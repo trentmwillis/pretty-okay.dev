@@ -37,11 +37,14 @@ const howToHandle = (request) => {
  */
 const networkThenCache = async (event) => {
 
-    const normalizedUrl = new URL(event.request.url);
+    const request = event.request;
+    const normalizedUrl = new URL(request.url);
     normalizedUrl.search = '';
     normalizedUrl.hash = '';
 
-    const resourcePromise = fetch(normalizedUrl);
+    const resourcePromise = fetch(normalizedUrl, {
+        redirect: request.redirect
+    });
 
     event.waitUntil(updateCacheAfter(resourcePromise, normalizedUrl));
 
