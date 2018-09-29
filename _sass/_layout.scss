@@ -3,6 +3,7 @@
  */
 
 .site-header {
+  position: relative;
   align-items: center;
   box-sizing: border-box;
   display: flex;
@@ -11,7 +12,7 @@
   width: 100%;
 
   &_link {
-    display: block;
+    display: inline-block;
     font-weight: bold;
     padding-bottom: 0;
     text-align: right;
@@ -21,9 +22,56 @@
     }
   }
 
+  &_nav,
+  &_search {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100vw;
+    height: $spacing-unit * 3;
+    background: white;
+    z-index: 1;
+    border-top: 1px solid $color-grey-light;
+    box-shadow: 0 $spacing-unit $spacing-unit rgba(0,0,0,0.2);
+  }
+
   &_nav {
-    float: right;
-    margin-left: $spacing-unit;
+    justify-content: space-around;
+    align-items: center;
+
+    &.is-expanded {
+      display: flex;
+    }
+  }
+
+  &_search {
+    &.is-expanded {
+      display: block;
+    }
+  }
+
+  &_toggle {
+    padding: 1rem;
+    border: none;
+    color: $color-grey;
+
+    &:first-of-type {
+      margin-left: auto;
+    }
+
+    &[aria-expanded="true"] {
+      color: $color-brand;
+    }
+  }
+
+  &_icon {
+    position: static;
+    fill: currentColor;
+    vertical-align: middle;
+    width: $size-2;
+    height: $size-2;
+    transform: none;
   }
 }
 
@@ -37,16 +85,44 @@
 
 @include media-query($min-viewport-width) {
   .site-header {
-    padding: ($spacing-unit * 2);
+    padding: calc((1.333rem * 1.8) - 2px) ($spacing-unit * 2);
 
     &_link {
-      display: inline-block;
       margin-left: ($spacing-unit / 2);
       padding-bottom: ($spacing-unit / 4);
 
       &.active {
         border-bottom: 2px solid $color-accent;
       }
+
+      &.site-title,
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    &_nav {
+      display: block;
+      position: static;
+      width: auto;
+      box-shadow: none;
+      border: none;
+      height: auto;
+    }
+
+    &_search {
+      display: block;
+      position: relative;
+      height: auto;
+      flex: 1;
+      margin: 0 $spacing-unit;
+      border: none;
+      border-radius: 3px;
+      box-shadow: none;
+    }
+
+    &_toggle {
+      display: none;
     }
   }
 

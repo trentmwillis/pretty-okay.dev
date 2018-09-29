@@ -46,4 +46,4 @@ $spacing-unit:    $size-2;
   background: linear-gradient($direction, $color-accent , $color-brand);
 }
 
-@import "base", "layout", "syntax-highlighting";
+@import "base", "search", "layout", "syntax-highlighting";

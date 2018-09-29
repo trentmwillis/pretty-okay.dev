@@ -19,3 +19,9 @@ markdown: kramdown
 future: true
 plugins:
   - jekyll-sitemap
+
+# Search
+algolia:
+  application_id: HOJ487LP0L
+  index_name: prettyokay
+  search_only_api_key: aed00982db05bd21dd05310be057bda8
