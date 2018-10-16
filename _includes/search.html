@@ -15,18 +15,46 @@
       const autocompleteOptions = {
         hint: false,
       };
+
+      const hits = autocomplete.sources.hits(index, { hitsPerPage: 5 });
+      const filterOutTalks = suggestions => suggestions.filter(suggestion => suggestion.category !== 'talk');
       const autocompleteSources = [
       {
-        source: autocomplete.sources.hits(index, { hitsPerPage: 5 }),
+        source(query, callback) {
+          hits(query, (suggestions) => {
+            const filtered = filterOutTalks(suggestions);
+            callback(filtered);
+          });
+        },
         displayKey: '',
         templates: {
           suggestion(suggestion) {
-            return `
-            <a href="${suggestion.url}" tabindex="-1">
-              <p class="aa-suggestion_content">${suggestion._highlightResult.content.value}</p>
-              <p class="aa-suggestion_meta">${suggestion.title}</p>
-            </a>
-            `;
+            const highlight = suggestion._highlightResult;
+            const markup = [
+              `<a href="${suggestion.url}" tabindex="-1">`,
+            ];
+
+            markup.push('<p class="aa-suggestion_meta">');
+            markup.push(highlight.title.value);
+
+            if (highlight.headings) {
+              highlight.headings.forEach((heading) => {
+                markup.push(` > <span class="aa-suggestion_heading">${heading.value}</span>`);
+              });
+            }
+
+            markup.push('</p>');
+
+            if (highlight.content) {
+              const content = highlight.content.value.trim();
+              if (content) {
+                markup.push(`<p class="aa-suggestion_content">${content}</p>`);
+              }
+            }
+
+            markup.push(`</a>`);
+
+            return markup.join('');
           },
           empty(query) {
             return `<div class="aa-empty">No results for "${query.query}".</div>`;

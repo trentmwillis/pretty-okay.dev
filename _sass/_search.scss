@@ -72,18 +72,25 @@
     }
   }
 
-  &-suggestion_content,
-  &-suggestion_meta {
+  &-suggestion_content {
     margin-bottom: 0;
     color: $color-black;
   }
 
   &-suggestion_meta {
-    font-size: $size-0;
+    margin-bottom: 0;
     color: $color-brand;
-    border-top: 1px solid $color-grey-light;
-    margin-top: $spacing-unit / 4;
-    padding-top: $spacing-unit / 4;
+
+    &:not(:last-child) {
+      font-size: $size-0;
+      padding-bottom: $spacing-unit / 4;
+      border-bottom: 1px solid $color-grey-light;
+      margin-bottom: $spacing-unit / 4;
+    }
+  }
+
+  &-suggestion_heading {
+    color: $color-accent;
   }
 }
 
