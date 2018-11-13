@@ -208,6 +208,11 @@ hr {
   @include gradient(to left);
 }
 
+.footnote {
+  font-size: $size-0;
+  color: $color-grey-dark;
+}
+
 /**
  * Wrapper
  */
