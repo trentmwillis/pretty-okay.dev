@@ -12,6 +12,9 @@
 
   .lineno {
     color: $color-grey;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
   }
 
   .code {
