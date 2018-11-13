@@ -4,7 +4,8 @@
   "description": "The personal website/blog of trentmwillis",
   "private": true,
   "scripts": {
-    "start": "bundle exec jekyll serve --incremental"
+    "start": "bundle exec jekyll serve --incremental",
+    "build": "bundle exec jekyll build"
   },
   "repository": {
     "type": "git",
