@@ -4,13 +4,13 @@ title: "<strong>Talks</strong> about internet &amp; people things."
 nav_title: "Talks"
 landing: true
 ---
+{% assign upcoming = site.posts | reverse | where:"category","talk" | where:"upcoming","true" %}
+{% unless upcoming.size == 0 %}
+  <section>
+    <h2 class="section-header">Upcoming Talks</h2>
 
-<section>
-  <h2 class="section-header">Upcoming Talks</h2>
-
-  <ul class="post-grid">
-    {% for post in site.posts reversed %}
-      {% if post.category == 'talk' and post.upcoming == true %}
+    <ul class="post-grid">
+      {% for post in upcoming %}
         <li class="post-grid-item">
           <p class="post-meta">
             <h2 class="post-title">
@@ -28,13 +28,13 @@ landing: true
             </p>
           </p>
         </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-</section>
+      {% endfor %}
+    </ul>
+  </section>
+{% endunless %}
 
 <section>
-    <h2 class="section-header">Previous Talks</h2>
+    <h2 class="section-header">Past Talks</h2>
 
   <ul class="post-grid">
     {% for post in site.posts %}
