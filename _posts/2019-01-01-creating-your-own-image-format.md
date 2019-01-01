@@ -4,7 +4,7 @@ title:  "Creating Your Own Image Format In The Browser"
 author: "Trent Willis"
 date:   2019-01-01
 image:  "2019-01-01-creating-your-own-image-format.jpg"
-excerpt: "A technical deep-dive in how to polyfill a custom image format in the browser using Service Workers and Web Crypto."
+excerpt: "A technical deep-dive in how to polyfill a custom image format in the browser using Service Workers, Streams, and Web Crypto."
 ---
 
 _This post is a technical deep-dive into the demo I gave for a talk of the same title at JSConf Colombia 2018._
