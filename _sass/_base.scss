@@ -101,6 +101,9 @@ h1, h2, h3, h4, h5, h6 {
   background: -webkit-linear-gradient(left, $color-brand, $color-accent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  max-width: 100%;
+  width: max-content;
 }
 
 h1 { font-size: $size-5; }

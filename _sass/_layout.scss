@@ -242,11 +242,7 @@
  */
 
 .section-header {
-  margin: $spacing-unit 0 $spacing-unit;
-  text-align: center;
-  border: 1px solid #e8e8e8;
-  border-left: none;
-  border-right: none;
+  margin: $spacing-unit auto $spacing-unit;
 }
 
 .post-list {
