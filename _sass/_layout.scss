@@ -189,7 +189,7 @@
 
 .site-footer {
   position: relative;
-  padding: $spacing-unit 0;
+  padding: ($spacing-unit * 2) 0 $spacing-unit;
   margin-top: $spacing-unit * 4;
 
   &:before {
@@ -231,6 +231,23 @@
 .page-content {
   animation-name: fade-in;
   animation-duration: 1.5s;
+}
+
+.share-blurb {
+  margin-top: $spacing-unit * 4;
+
+  font-weight: bold;
+  color: $color-brand;
+  line-height: 1.5;
+
+  background: -webkit-linear-gradient(left, $color-brand, $color-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  & > a {
+    -webkit-text-fill-color: initial;
+    text-decoration: underline;
+  }
 }
 
 @keyframes fade-in {
@@ -333,12 +350,6 @@
 .article-header {
   margin: $spacing-unit 0;
   text-align: center;
-}
-
-.article-content {
-  > :last-child {
-    margin-bottom: 0;
-  }
 }
 
 /**

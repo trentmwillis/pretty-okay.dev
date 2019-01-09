@@ -479,9 +479,3 @@ Now, this approach works and is even fairly quick (depending on the type of tran
 I think implementing this is a good way to familiarize yourself with some of the awesome new web platform features we're starting to have available today and it's always fun to experiment! So, if you try this out or anything similar, let me know! I'd love to take a look and probably share it!
 
 You can check out [the final code](https://glitch.com/edit/#!/cryptogram-streaming?path=public/service-worker.js) and [live demo](https://cryptogram-streaming.glitch.me/) on Glitch.
-
----
-
-<p class="footnote" markdown="1">
-    _If you enjoyed this post or, at least, learned something from it, then I'd appreciate it if you could [share it](http://twitter.com/share?text={{ page.title }}&url={{ page.url | replace:'.html','' | prepend: site.baseurl | prepend: site.url }}) so that others can enjoy or learn from it (or both)!_
-</p>

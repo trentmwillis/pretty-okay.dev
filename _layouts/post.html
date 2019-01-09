@@ -26,6 +26,10 @@ layout: default
 
   <div class="article-content" itemprop="articleBody">
     {{ content }}
+
+    <p class="share-blurb">
+      If you enjoyed this post or, at least, learned something from it, then I'd appreciate it if you could <a target="_blank" rel="noreferrer noopener" href="http://twitter.com/share?text=%22{{ page.title | strip_html | xml_escape }}%22%20by%20@trentmwillis&url={{ page.url | replace:'.html','' | prepend: site.baseurl | prepend: site.url }}">share it</a> so that others can enjoy or learn from it (or both)!
+    </p>
   </div>
 
   {% include post-scripts.html %}
