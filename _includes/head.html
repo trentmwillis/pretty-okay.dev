@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% if page.nav_title %}{{ page.nav_title }}{% else %}{{ page.title | xml_escape }}{% endif %} | {{ site.title }}</title>
+  <title>{% if page.tab_title %}{{ page.tab_title }}{% else %}{{ page.title | xml_escape }}{% endif %} | {{ site.title }}</title>
 
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   <meta name="theme-color" content="#dc2430">
