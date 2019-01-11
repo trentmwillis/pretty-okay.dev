@@ -229,11 +229,6 @@
  * Page Content
  */
 
-.page-content {
-  animation-name: fade-in;
-  animation-duration: 1.5s;
-}
-
 .share-blurb {
   margin-top: $spacing-unit * 4;
 
@@ -249,11 +244,6 @@
     -webkit-text-fill-color: initial;
     text-decoration: underline;
   }
-}
-
-@keyframes fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
 }
 
 /**
