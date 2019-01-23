@@ -115,4 +115,4 @@ That's why I say this is a "bonus" reason to set goals.
 
 There you have it. Don't set goals because you feel obligated to or because you've been told they're intrinsically good to have. Set goals to better yourself, understand your likes and dislikes, and become more comfortable as yourself.
 
-_Next week, we'll be looking at how to set worthwhile goals with these motivations in mind._
+_Next time, we'll be looking at [how to set worthwhile goals]({{ site.baseurl }}{% post_url 2019-01-23-new-year-new-goals-how-set %}) with these motivations in mind._
