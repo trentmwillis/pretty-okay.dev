@@ -30,8 +30,11 @@
         templates: {
           suggestion(suggestion) {
             const highlight = suggestion._highlightResult;
+            const url = suggestion.url.endsWith('.html') ?
+              suggestion.url.substring(0, suggestion.url.length - 5) :
+              suggestion.url;
             const markup = [
-              `<a href="${suggestion.url}" tabindex="-1">`,
+              `<a href="${url}" tabindex="-1">`,
             ];
 
             markup.push('<p class="aa-suggestion_meta">');
