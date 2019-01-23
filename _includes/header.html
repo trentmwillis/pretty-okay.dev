@@ -24,7 +24,7 @@
   <nav id="nav" class="site-header_nav">
     {% for navPage in site.pages %}
       {% if navPage.nav_title %}
-        <a class="site-header_link {% if navPage.url == page.url or navPage.nav_title == page.nav_title %}active{% endif %}" href="{{navPage.url | remove: '.html'}}">{{navPage.nav_title}}</a>
+        <a class="site-header_link {% if navPage.url == page.url or navPage.nav_title == page.nav_title or (navPage.nav_title == 'Blog' and page.layout == 'post') %}active{% endif %}" href="{{navPage.url | remove: '.html'}}">{{navPage.nav_title}}</a>
       {% endif %}
     {% endfor %}
   </nav>
