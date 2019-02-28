@@ -69,7 +69,7 @@ Next, we'll define the actual function logic. We want to start by launching a br
 // file: server.js method: getRandomPost
 const browser = await puppeteer.launch();
 const page = await browser.newPage();
-await page.goto('https://pretty-okay.com/');
+await page.goto('https://pretty-okay.dev/');
 {% endhighlight %}
 
 Thanks to Puppeteers descriptive API, it's pretty clear what is happening in the above snippet. The only thing that might be worth clarifying is that you can think of a "page" as a "tab" in the context of Chrome.
@@ -157,7 +157,7 @@ const getRandomInt = max => Math.floor(Math.random() * max);
 const getRandomPost = async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto('https://pretty-okay.com/');
+    await page.goto('https://pretty-okay.dev/');
 
     const postLinks = await page.$$('.post-title > a');
     const postIndex = getRandomInt(postLinks.length);

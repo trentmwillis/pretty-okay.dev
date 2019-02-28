@@ -77,8 +77,8 @@ In spite of the prevalence of software engineering nowadays, I still have many f
 
 **Friend:** "Sounds complex, but thanks for the taking the time to explain things to me!"
 
-**Me:** "No problem, if you ever have any more questions, feel free to [email me](mailto:trent@pretty-okay.com)."
+**Me:** "No problem, if you ever have any more questions, feel free to [email me](mailto:trent@pretty-okay.dev)."
 
 ---
 
-Seriously, if there is anything else you think I should mention or elaborate on further in this hypothetical conversation, [let me know](mailto:trent@pretty-okay.com)!
+Seriously, if there is anything else you think I should mention or elaborate on further in this hypothetical conversation, [let me know](mailto:trent@pretty-okay.dev)!

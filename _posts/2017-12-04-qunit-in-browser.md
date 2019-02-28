@@ -54,7 +54,7 @@ Additionally, since the tests execute in the context of the browser, you get ful
 In fact, if you place a `debugger` statement in your test code, QUnit-In-Browser will automatically open the DevTools for you and cause test execution to pause, allowing you to start debugging.
 
 {% highlight javascript linenos %}
-QUnit.test.inBrowser('Debugging test', 'https://pretty-okay.com', function(assert) {
+QUnit.test.inBrowser('Debugging test', 'https://pretty-okay.dev', function(assert) {
   debugger; // Opens DevTools and pauses the test
 });
 {% endhighlight %}
