@@ -16,14 +16,79 @@ $max-viewport-width: 1280px;
 
 $content-width:    42rem;
 
-$color-black:      #292929;
-$color-white:      #fff;
-$color-grey:       #757575;
-$color-grey-light: lighten($color-grey, 40%);
-$color-grey-dark:  darken($color-grey, 25%);
+$colors-primary: (
+  0: #610316,
+  1: #8A041A,
+  2: #AB091E,
+  3: #CF1124,
+  4: #E12D39,
+  5: #EF4E4E,
+  6: #F86A6A,
+  7: #FF9B9B,
+  8: #FFBDBD,
+  9: #FFE3E3,
+);
 
-$color-brand:      #dc2430;
-$color-accent:     #7b4397;
+@function color-primary($intensity) {
+  @if map-has-key($colors-primary, $intensity) {
+    @return map-get($colors-primary, $intensity);
+  }
+
+  @warn "The key '#{$intensity}' is not in the map '$colors-primary'";
+  @return null;
+};
+
+$colors-secondary: (
+  0: #44056E,
+  1: #580A94,
+  2: #690CB0,
+  3: #7A0ECC,
+  4: #8719E0,
+  5: #9446ED,
+  6: #A368FC,
+  7: #B990FF,
+  8: #DAC4FF,
+  9: #F2EBFE,
+);
+
+@function color-secondary($intensity) {
+  @if map-has-key($colors-secondary, $intensity) {
+    @return map-get($colors-secondary, $intensity);
+  }
+
+  @warn "The key '#{$intensity}' is not in the map '$colors-secondary'";
+  @return null;
+};
+
+$colors-neutral: (
+  0: #222222,
+  1: #3B3B3B,
+  2: #515151,
+  3: #626262,
+  4: #7E7E7E,
+  5: #9E9E9E,
+  6: #B1B1B1,
+  7: #CFCFCF,
+  8: #E1E1E1,
+  9: #F7F7F7,
+);
+
+@function color-neutral($intensity) {
+  @if map-has-key($colors-neutral, $intensity) {
+    @return map-get($colors-neutral, $intensity);
+  }
+
+  @warn "The key '#{$intensity}' is not in the map '$colors-neutral'";
+  @return null;
+};
+
+$color-brand:      color-primary(4);
+$color-accent:     color-secondary(5);
+$color-black:      color-neutral(0);
+$color-grey-dark:  color-neutral(2);
+$color-grey:       color-neutral(4);
+$color-grey-light: color-neutral(7);
+$color-white:      color-neutral(9);
 
 // Sizing based on a "perfect fourth" modular scale: http://www.modularscale.com/?1&em&1.333
 $size-0:          0.75rem;

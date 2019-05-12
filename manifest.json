@@ -6,7 +6,7 @@
   "description": "{{ site.description }}",
   "display": "minimal-ui",
   "background_color": "#fff",
-  "theme_color": "#dc2430",
+  "theme_color": "#E12D39",
   "start_url": "/",
   "icons": [
     {

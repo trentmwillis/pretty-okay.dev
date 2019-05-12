@@ -16,9 +16,14 @@
     font-weight: bold;
     padding-bottom: 0;
     text-align: right;
+    color: color-neutral(2);
+
+    &:hover {
+      color: color-neutral(0);
+    }
 
     &.active {
-      color: $color-accent;
+      color: color-secondary(4);
     }
   }
 
@@ -30,7 +35,7 @@
     left: 0;
     width: 100vw;
     height: $spacing-unit * 3;
-    background: white;
+    background: $color-white;
     z-index: 1;
     border-top: 1px solid $color-grey-light;
     box-shadow: 0 $spacing-unit $spacing-unit rgba(0,0,0,0.2);
@@ -77,11 +82,16 @@
 }
 
 .site-title {
+  color: $color-brand;
   line-height: 1;
   font-size: $size-2;
   margin-left: 0;
   padding-bottom: 0;
   text-transform: uppercase;
+
+  &:hover {
+    color: $color-brand;
+  }
 }
 
 @include media-query($min-viewport-width) {
@@ -91,10 +101,6 @@
     &_link {
       margin-left: ($spacing-unit / 2);
       padding-bottom: ($spacing-unit / 4);
-
-      &.active {
-        border-bottom: 2px solid $color-accent;
-      }
 
       &.site-title,
       &:first-child {
@@ -166,7 +172,7 @@
   }
 
   hr {
-    background: white;
+    background: $color-white;
   }
 }
 
@@ -180,8 +186,8 @@
 
 .landing-title {
   width: initial;
-  color: white;
-  -webkit-text-fill-color: white;
+  color: $color-white;
+  -webkit-text-fill-color: $color-white;
 }
 
 /**
@@ -308,7 +314,7 @@
 
 .article-meta,
 .post-meta {
-  color: $color-grey;
+  color: $color-grey-dark;
   margin: 0;
 }
 
