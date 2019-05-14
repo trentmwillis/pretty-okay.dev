@@ -40,7 +40,7 @@
     top: 50%;
     left: $size-1 / 2;
     transform: translateY(-50%);
-    fill: $color-grey-light;
+    fill: $color-grey;
   }
 
   &-dropdown-menu {
@@ -99,6 +99,7 @@
   .aa {
     &-input-search {
       border-radius: $spacing-unit / 4;
+      color: $color-grey-dark;
       transition: box-shadow 0.3s;
 
       &:focus {
