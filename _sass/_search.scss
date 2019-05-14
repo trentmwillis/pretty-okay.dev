@@ -98,7 +98,7 @@
 @media (min-width: $min-viewport-width) {
   .aa {
     &-input-search {
-      border-radius: 3px;
+      border-radius: $spacing-unit / 4;
       transition: box-shadow 0.3s;
 
       &:focus {
@@ -108,7 +108,7 @@
     }
 
     &-dropdown-menu {
-      border-radius: 3px;
+      border-radius: $spacing-unit / 4;
       border-top: none;
       min-width: 20rem;
       margin-top: $spacing-unit;

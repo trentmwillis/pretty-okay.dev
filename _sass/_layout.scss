@@ -124,7 +124,6 @@
       flex: 1;
       margin: 0 $spacing-unit;
       border: none;
-      border-radius: 3px;
       box-shadow: none;
     }
 
@@ -280,7 +279,7 @@
     padding-bottom: $spacing-unit;
     margin-top: ($spacing-unit * 2);
     margin-bottom: ($spacing-unit * 2);
-    border-radius: 3px;
+    border-radius: $spacing-unit / 4;
     border-bottom: none;
 
     &::before {
@@ -327,6 +326,7 @@
 }
 
 .post-grid-item {
+  border-radius: $spacing-unit / 4;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   padding: $spacing-unit;
   padding-bottom: $spacing-unit * 3;

@@ -175,7 +175,6 @@ blockquote {
 pre,
 code {
   border: 1px solid $color-grey-light;
-  border-radius: 2px;
   line-height: 1.5;
 
   pre {
@@ -186,10 +185,12 @@ code {
 
 code {
   padding: ($spacing-unit * 0.1) ($spacing-unit * 0.2);
+  border-radius: 4px;
   color: $color-accent;
 }
 
 pre {
+  border-radius: $spacing-unit / 4;
   overflow-x: auto;
 
   > code {

@@ -5,9 +5,9 @@
   margin-bottom: $spacing-unit;
 
   .gl {
-    padding: ($spacing-unit / 2);
-    border-right: 1px solid $color-grey-light;
-    background: $color-grey-light;
+    padding: ($spacing-unit / 4);
+    background: color-neutral(8);
+    border-radius: $spacing-unit / 4;
   }
 
   .lineno {
@@ -18,7 +18,7 @@
   }
 
   .code {
-    padding: 0 $spacing-unit;
+    padding: 0 $spacing-unit / 2;
   }
 
   .hll { background-color: #ffffcc }
