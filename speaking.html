@@ -13,7 +13,7 @@ landing: true
     <ul class="post-grid">
       {% for post in upcoming %}
         <li class="post-grid-item">
-          <p class="post-meta">
+          <div class="post-grid-header">
             <h2 class="post-title">
               {{ post.event }}</a>
             </h2>
@@ -21,12 +21,12 @@ landing: true
             <p class="post-meta">
               {{ post.date | date: "%b %-d, %Y" }}
             </p>
+          </div>
 
-            <p class="watch-video">
-              <a href="{{ post.info }}" target="_blank" rel="noreferrer noopener">
-                View Info
-              </a>
-            </p>
+          <p class="watch-video">
+            <a href="{{ post.info }}" target="_blank" rel="noreferrer noopener">
+              View Event Info
+            </a>
           </p>
         </li>
       {% endfor %}
@@ -41,21 +41,29 @@ landing: true
     {% for post in site.posts %}
       {% if post.category == 'talk' and post.upcoming != true %}
         <li class="post-grid-item">
-          <h2 class="post-title">
-            {{ post.event }}</a>
-          </h2>
+          <div class="post-grid-header">
+            <h2 class="post-title">
+              {{ post.event }}</a>
+            </h2>
 
-          <p class="post-meta">
-            {{ post.date | date: "%b %-d, %Y" }}
-          </p>
+            <p class="post-meta">
+              {{ post.date | date: "%b %-d, %Y" }}
+            </p>
+          </div>
 
           <p class="watch-video">
             {% if post.video_url %}
               <a href="{{ post.video_url }}" target="_blank" rel="noreferrer noopener">Watch Video</a>
             {% elsif post.audio_url %}
               <a href="{{ post.audio_url }}" target="_blank" rel="noreferrer noopener">Listen to Recording</a>
-            {% elsif post.info %}
-              <a href="{{ post.info }}" target="_blank" rel="noreferrer noopener">View Info</a>
+            {% endif %}
+
+            {% if post.notist %}
+              <a href="{{ post.notist }}" target="_blank" rel="noreferrer noopener">View Slides</a>
+            {% endif %}
+
+            {% if post.info %}
+              <a href="{{ post.info }}" target="_blank" rel="noreferrer noopener">View Event Info</a>
             {% endif %}
           </p>
         </li>
