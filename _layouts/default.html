@@ -5,7 +5,7 @@
   <body>
     {% include header.html %}
 
-    <div class="banner"{% if page.image %} style="background-image:url('{{ page.image | prepend: '/assets/images/' }}')"{% endif %}>
+    <div {% if page.image %}class="banner has-image" style="background-image:url('{{ page.image | prepend: '/assets/images/' }}')"{% else %}class="banner no-image"{% endif %}>
       <div class="wrapper">
         {% if page.landing == true %}
           <h2 class="landing-title">{{ page.title }}</h2>

@@ -111,4 +111,61 @@ $spacing-unit:    $size-2;
   background: linear-gradient($direction, $color-accent , $color-brand);
 }
 
+@mixin animated-wave() {
+  background-position: bottom -40% left 0%;
+  background-repeat: repeat-x;
+  background-size: 200% 50%;
+  background-image: url("/assets/wave.svg");
+
+  -webkit-animation: Wave 6s cubic-bezier(0.18, 0.5, 0.8, 0.5) infinite;
+  -moz-animation: Wave 6s cubic-bezier(0.18, 0.5, 0.8, 0.5) infinite;
+  animation: Wave 6s cubic-bezier(0.18, 0.5, 0.8, 0.5) infinite;
+
+  will-change: background-position;
+}
+
+@-webkit-keyframes Wave {
+  0%   { background-position: bottom -40% left -50% }
+  100% { background-position: bottom -40% left 150% }
+}
+
+@-moz-keyframes Wave {
+  0%   { background-position: bottom -40% left -50% }
+  100% { background-position: bottom -40% left 150% }
+}
+
+@keyframes Wave {
+  0%   { background-position: bottom -40% left -50% }
+  100% { background-position: bottom -40% left 150% }
+}
+
+@mixin animated-gradient() {
+  background: linear-gradient(135deg, #e12d39, #9446ed, #e12d39, #9446ed);
+  background-size: 400% 100%;
+
+  -webkit-animation: GradientMove 24s linear infinite;
+  -moz-animation: GradientMove 24s linear infinite;
+  animation: GradientMove 24s linear infinite;
+
+  will-change: background-position;
+}
+
+@-webkit-keyframes GradientMove {
+  0%   { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+@-moz-keyframes GradientMove {
+  0%   { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+@keyframes GradientMove {
+  0%   { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
 @import "base", "search", "layout", "syntax-highlighting";

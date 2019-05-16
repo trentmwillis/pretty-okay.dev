@@ -150,20 +150,32 @@
   line-height: 1;
   text-align: center;
 
-  @include gradient(to left);
+  &.no-image {
+    @include animated-gradient();
 
-  background-size: cover;
-  background-position: top 40% left 50%;
+    &::before {
+      opacity: 0.1;
+      @include animated-wave();
+    }
+  }
 
-  &:before {
+  &.has-image {
+    background-position: top 40% left 50%;
+    background-size: cover;
+
+    &::before {
+      opacity: 0.9;
+      @include animated-gradient();
+    }
+  }
+
+  &::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    @include gradient(to left);
-    opacity: 0.9;
   }
 
   .wrapper {
