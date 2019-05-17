@@ -2,7 +2,10 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/ruby:2.4.1-node-browsers
     steps:
       - checkout
-      - run: echo "A first hello"
+      - run: bundle -v
+      - run: bundle install
+      - run: bundle exec jekyll build
+      - run: npx @percy/agent snapshot _site/ --ignore-files talk/**/*.html,playground/**/*.html,**/music/**/*.html
