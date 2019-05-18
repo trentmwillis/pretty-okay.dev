@@ -5,7 +5,19 @@ jobs:
       - image: circleci/ruby:2.4.1-node-browsers
     steps:
       - checkout
+
+      # Logging Environment Version Info
+      - run: npm -v
+      - run: node -v
       - run: bundle -v
+
+      # Installing Dependencies
+      - run: npm install
       - run: bundle install
+
+      # Build Site Assets
       - run: bundle exec jekyll build
-      - run: npx @percy/agent snapshot _site/ --ignore-files talk/**/*.html,playground/**/*.html,**/music/**/*.html
+
+      # Take Snapshots
+      - run: PERCY_TOKEN=$PERCY_TOKEN_INTERACTIVE npm run snapshots:interactive
+      - run: PERCY_TOKEN=$PERCY_TOKEN_STATIC npm run snapshots:static
