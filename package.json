@@ -4,8 +4,12 @@
   "description": "The personal website/blog of trentmwillis",
   "private": true,
   "scripts": {
+    "build": "bundle exec jekyll build",
     "start": "bundle exec jekyll serve",
-    "build": "bundle exec jekyll build"
+    "presnapshots:interactive": "http-server _site -s -p 4000 &",
+    "snapshots:interactive": "percy exec -- node _tests/snapshots.js",
+    "postsnapshots:interactive": "pkill -f 'http-server _site -s -p 4000'",
+    "snapshots:static": "percy snapshot _site/ --ignore-files talk/**/*.html,playground/**/*.html,**/music/**/*.html"
   },
   "repository": {
     "type": "git",
@@ -15,5 +19,10 @@
   "bugs": {
     "url": "https://github.com/trentmwillis/trentmwillis.github.io/issues"
   },
-  "homepage": "https://pretty-okay.dev"
+  "homepage": "https://pretty-okay.dev",
+  "devDependencies": {
+    "@percy/agent": "^0.4.8",
+    "@percy/script": "^1.0.0",
+    "http-server": "^0.11.1"
+  }
 }
