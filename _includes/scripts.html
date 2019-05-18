@@ -3,3 +3,86 @@
         navigator.serviceWorker.register('/service-worker.js');
     }
 </script>
+
+<script src="https://cdn.jsdelivr.net/combine/npm/algoliasearch@3.26.0,npm/autocomplete.js@0.29.0/dist/autocomplete.min.js" defer></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    (function setupSearch() {
+      const client = algoliasearch('{{ site.algolia.application_id }}', '{{ site.algolia.search_only_api_key }}');
+      const index = client.initIndex('{{ site.algolia.index_name }}');
+      const autocompleteOptions = {
+        hint: false,
+      };
+
+      const hits = autocomplete.sources.hits(index, { hitsPerPage: 5 });
+      const filterOutTalks = suggestions => suggestions.filter(suggestion => suggestion.category !== 'talk');
+      const autocompleteSources = [
+      {
+        source(query, callback) {
+          hits(query, (suggestions) => {
+            const filtered = filterOutTalks(suggestions);
+            callback(filtered);
+          });
+        },
+        displayKey: '',
+        templates: {
+          suggestion(suggestion) {
+            const highlight = suggestion._highlightResult;
+            const url = suggestion.url.endsWith('.html') ?
+              suggestion.url.substring(0, suggestion.url.length - 5) :
+              suggestion.url;
+            const markup = [
+              `<a href="${url}" tabindex="-1">`,
+            ];
+
+            markup.push('<p class="aa-suggestion_meta">');
+            markup.push(highlight.title.value);
+
+            if (highlight.headings) {
+              highlight.headings.forEach((heading) => {
+                markup.push(` > <span class="aa-suggestion_heading">${heading.value}</span>`);
+              });
+            }
+
+            markup.push('</p>');
+
+            if (highlight.content) {
+              const content = highlight.content.value.trim();
+              if (content) {
+                markup.push(`<p class="aa-suggestion_content">${content}</p>`);
+              }
+            }
+
+            markup.push(`</a>`);
+
+            return markup.join('');
+          },
+          empty(query) {
+            return `<div class="aa-empty">No results for "${query.query}".</div>`;
+          }
+        }
+      }
+      ];
+      autocomplete('#aa-search-input', autocompleteOptions, autocompleteSources)
+      .on('autocomplete:selected', (event, suggestion) => window.location = suggestion.url);
+    }());
+
+    (function setupMobileToggles() {
+      const toggler = (element) => (event) => {
+        const target = event.currentTarget;
+        const isExpanded = target.getAttribute('aria-expanded') === 'true';
+        target.setAttribute('aria-expanded', !isExpanded);
+        element.classList.toggle('is-expanded', !isExpanded);
+      };
+
+      const registerCollapsibleElement = (element) => {
+        const controlledElement = document.getElementById(element.getAttribute('aria-controls'));
+        element.addEventListener('click', toggler(controlledElement));
+        element.setAttribute('aria-expanded', false);
+      };
+
+      const collapsibleElements = [...document.querySelectorAll('.site-header_toggle')];
+      collapsibleElements.forEach(registerCollapsibleElement);
+    }());
+  });
+</script>
