@@ -127,6 +127,14 @@ a {
 }
 
 /**
+ * Strong and Emphasized Text
+ */
+
+strong {
+  color: color-neutral(1);
+}
+
+/**
  * Blockquotes
  */
 
@@ -179,9 +187,9 @@ code {
 
 code {
   padding: ($spacing-unit * 0.1) ($spacing-unit * 0.2);
-  border: 1px solid $color-grey-light;
+  background: color-primary(8);
+  background: linear-gradient(45deg, color-primary(8) , color-secondary(8));
   border-radius: 4px;
-  color: color-secondary(4);
 }
 
 pre {
