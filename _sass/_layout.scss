@@ -249,7 +249,7 @@
 
 .share-blurb {
   margin-top: $spacing-unit * 4;
-
+  font-style: italic;
   font-weight: bold;
   color: $color-brand;
   line-height: 1.5;
@@ -321,7 +321,6 @@
 .post-excerpt {
   margin-top: $spacing-unit;
   font-style: italic;
-  color: $color-grey-dark;
 }
 
 .article-meta,
