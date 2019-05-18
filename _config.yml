@@ -8,7 +8,7 @@
 # Site settings
 title: Pretty Okay
 email: trent@pretty-okay.dev
-description: The personal website of Trent Willis, a maker of internet things. Blogging and speaking about the tech industry, web development, and living in Silicon Valley.
+description: The personal website of Trent Willis, a maker of web things. Blogging and speaking about the tech industry, web development, and living in Silicon Valley.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://pretty-okay.dev" # the base hostname & protocol for your site
 twitter_username: trentmwillis
