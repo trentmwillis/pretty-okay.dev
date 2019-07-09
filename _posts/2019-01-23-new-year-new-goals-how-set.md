@@ -108,4 +108,4 @@ Choose vague goals that match the motivations you've found for yourself, then tu
 
 The first part of this process is very important for finding goals you're excited to pursue; the second part is important for finding goals that you can stick with and reach.
 
-_Next time, we'll be looking at how to reach your goals after setting them._
+_Next time, we'll be looking at [how to reach your goals]({{ site.baseurl }}{% post_url 2019-07-08-new-year-new-goals-how-reach %}) after setting them._
