@@ -9,9 +9,9 @@ excerpt: "A technical deep-dive in how to polyfill a custom image format in the 
 
 _This post is a technical deep-dive into the demo I gave for a talk of the same title at JSConf Colombia 2018._
 
-Towards the beginning of this year, I was looking into the new [Streams API](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) that started showing up in browsers. In [the introduction to the Streams API specification](https://streams.spec.whatwg.org/#intro), it is noted that Streams "if installed inside the fetch hook of a service worker, [_sic_] would allow developers to transparently polyfill new image formats."
+Towards the beginning of 2018, I was looking into the new [Streams API](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) that started showing up in browsers. In [the introduction to the Streams API specification](https://streams.spec.whatwg.org/#intro), it is noted that Streams "if installed inside the fetch hook of a service worker, [_sic_] would allow developers to transparently polyfill new image formats."
 
-This sounded really intriguing to me, so I decided to test that use case out and built a new, custom image format. That image format is the `.epng` format, which stands for "Encrypted PNG". It will represent PNG images that have been encrypted using the `AES-CTR` algorithm in the [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API).
+This sounded really intriguing to me, so I decided to test that use case out and built a new, custom image format. That image format is the `.epng` format, which stands for "Encrypted PNG". It will represent PNG images that have been encrypted using the `AES-CTR` algorithm in the [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API). To generate your own encrypted image to follow along with this post, check out the ["Encrypt Image" Glitch app](https://encrypt-image.glitch.me/) that I put together.
 
 This post will be broken down into 5 sections. Feel free to jump around (or straight to the end), if any particular portion interests you more than the others:
 
