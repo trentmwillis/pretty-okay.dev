@@ -111,19 +111,6 @@ $spacing-unit:    $size-2;
   background: linear-gradient($direction, $color-accent , $color-brand);
 }
 
-@mixin animated-wave() {
-  background-position: bottom -40% right 0%;
-  background-repeat: repeat-x;
-  background-size: 200% 50%;
-  background-image: url("/assets/wave.svg");
-
-  -webkit-animation: Wave 5s cubic-bezier(0.18, 0.5, 0.8, 0.5) infinite;
-  -moz-animation: Wave 5s cubic-bezier(0.18, 0.5, 0.8, 0.5) infinite;
-  animation: Wave 5s cubic-bezier(0.18, 0.5, 0.8, 0.5) infinite;
-
-  will-change: background-position;
-}
-
 @-webkit-keyframes Wave {
   0%   { background-position: bottom -40% right -50% }
   100% { background-position: bottom -40% right 150% }

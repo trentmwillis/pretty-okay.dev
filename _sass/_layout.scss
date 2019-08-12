@@ -153,11 +153,6 @@
 
   &.no-image {
     @include animated-gradient();
-
-    &::before {
-      opacity: 0.1;
-      @include animated-wave();
-    }
   }
 
   &.has-image {
