@@ -30,6 +30,10 @@ html {
   font-kerning: normal;
 }
 
+body {
+  transition: background-color 0.3s;
+}
+
 @include media-query($min-viewport-width) {
   html {
     font-size: calc(#{$min-font-size} + 4 * ((100vw - #{$min-viewport-width}) / 780));
@@ -234,8 +238,6 @@ hr {
   margin-left: auto;
   padding-right: $spacing-unit;
   padding-left: $spacing-unit;
-
-  @extend %clearfix;
 }
 
 /**

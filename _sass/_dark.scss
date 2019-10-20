@@ -1,3 +1,63 @@
+.theme-toggle {
+  position: relative;
+  top: -1px;
+  border: none;
+  border-radius: 100%;
+  cursor: pointer;
+  width: $size-2;
+  height: $size-2;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: ($spacing-unit / 2);
+  transition: background-color 0.3s;
+
+  .mode-option > svg {
+    display: block;
+    width: $size-0;
+    height: $size-0;
+  }
+
+  .dark-mode > svg > path {
+    fill: $color-black;
+  }
+
+  .light-mode > svg > path {
+    fill: $color-white;
+  }
+
+  &[aria-checked="false"] {
+    background: $color-brand;
+
+    &:hover,
+    &:active,
+    &:focus {
+      outline: none;
+      background: color-primary(2);
+    }
+
+    .light-mode {
+      display: none;
+    }
+  }
+
+  &[aria-checked="true"] {
+    background: color-primary(6);
+
+    &:hover,
+    &:active,
+    &:focus {
+      outline: none;
+      background: color-primary(7);
+    }
+
+    .dark-mode {
+      display: none;
+    }
+  }
+}
+
 .dark {
   // overrides from _base.scss
 
