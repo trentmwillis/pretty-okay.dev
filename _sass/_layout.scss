@@ -121,6 +121,7 @@
     &_search {
       display: block;
       position: relative;
+      top: -4px;
       height: auto;
       flex: 1;
       margin: 0 $spacing-unit;
@@ -332,7 +333,7 @@
   font-size: 2rem;
 
   a {
-    -webkit-text-fill-color: initial;
+    -webkit-text-fill-color: currentColor;
   }
 }
 
