@@ -1,0 +1,210 @@
+.dark {
+  // overrides from _base.scss
+
+  color: color-neutral(8);
+  background-color: $color-black;
+
+  a {
+    color: color-primary(6);
+
+    &:hover {
+      color: color-primary(7);
+    }
+  }
+
+  strong {
+    color: color-neutral(9);
+  }
+
+  blockquote {
+    color: $color-white;
+
+    cite {
+      color: color-neutral(6);
+    }
+  }
+
+  code {
+    background: color-primary(2);
+    background: linear-gradient(45deg, color-primary(2) , color-secondary(2));
+  }
+
+  pre {
+    > code {
+      color: color-neutral(8);
+    }
+  }
+
+  .footnote {
+    color: $color-grey-light;
+  }
+
+  .icon {
+    > svg {
+      path {
+        fill: color-primary(6);
+      }
+
+      &:hover path {
+        fill: color-primary(7);
+      }
+    }
+  }
+
+  .collapsible-toggle {
+    background: color-primary(4);
+  }
+
+  .collapsible-toggle[aria-expanded="true"] {
+    background: color-secondary(5);
+  }
+
+  // overrides from _search.scss
+
+  .ais-Highlight {
+    color: $color-brand;
+  }
+
+  .aa-suggestion + .aa-suggestion {
+    border-top: 1px solid $color-grey-dark;
+  }
+
+  .aa {
+    &-input-search {
+      background-color: $color-black;
+      color: $color-white;
+
+      &::placeholder {
+        color: $color-grey;
+      }
+
+      &:focus {
+        box-shadow: inset 0px 0px 0px 2px color-neutral(1);
+      }
+    }
+
+    &-dropdown-menu {
+      background-color: $color-black;
+      border-top: 1px solid $color-grey-dark;
+    }
+
+    &-suggestion {
+      &:hover,
+      &.aa-cursor {
+        background-color: rgba($color-grey-dark, 0.5);
+      }
+    }
+
+    &-suggestion_content {
+      color: $color-white;
+    }
+
+    &-suggestion_meta {
+      color: $color-brand;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid $color-grey-dark;
+      }
+    }
+
+    &-suggestion_heading {
+      color: $color-accent;
+    }
+  }
+
+  @media (min-width: $min-viewport-width) {
+    .aa {
+      &-input-search {
+        color: $color-grey-light;
+      }
+    }
+  }
+
+  // overrides from _layout.scss
+
+  .site-header {
+    &_link {
+      color: color-neutral(6);
+
+      &:hover {
+        color: color-neutral(9);
+      }
+
+      &.active {
+        color: color-secondary(6);
+      }
+    }
+
+    &_nav,
+    &_search {
+      background: $color-black;
+      border-top: 1px solid $color-grey-dark;
+    }
+
+    &_toggle {
+      color: $color-grey-light;
+
+      &[aria-expanded="true"] {
+        color: $color-brand;
+      }
+    }
+  }
+
+  @include media-query($min-viewport-width) {
+    .site-header {
+      &_nav,
+      &_search {
+        border: none;
+      }
+    }
+  }
+
+  .site-title {
+    color: $color-brand;
+
+    &:hover {
+      color: $color-brand;
+    }
+  }
+
+  .banner {
+    &::after {
+      background-image: url("/assets/wave-dark.svg");
+    }
+  }
+
+  .article-meta,
+  .post-meta {
+    color: color-neutral(6);
+    margin: 0;
+  }
+
+  .post-item {
+    border-bottom-color: $color-grey-dark;
+  }
+
+  .post-list.has-highlight .post-item:first-child {
+    border: 2px solid color-neutral(1);
+
+    &::before {
+      color: color-neutral(6);
+    }
+  }
+
+  .post-grid-item {
+    border: 2px solid color-neutral(1);
+  }
+
+
+  .watch-video {
+    a {
+      border-bottom-color: $color-grey-dark;
+    }
+  }
+
+  .highlight {
+    border: 2px solid color-neutral(1);
+    border-radius: $spacing-unit / 4;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+}
