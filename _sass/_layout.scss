@@ -219,7 +219,7 @@
 
 .site-footer {
   position: relative;
-  padding: ($spacing-unit * 2) 0 $spacing-unit;
+  padding: ($spacing-unit * 2) 0;
   margin-top: $spacing-unit * 4;
 
   &:before {
@@ -233,23 +233,26 @@
     @include gradient(-45deg);
   }
 
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .info {
-    float: left;
-    width: 60%;
     margin: 0;
     line-height: 1.2;
   }
 
   .social-icons {
-    float: left;
-    width: 40%;
+    display: flex;
+    align-items: center;
     text-align: right;
 
     a {
       display: inline-block;
       margin-left: ($spacing-unit / 2);
       line-height: 1.2;
-      vertical-align: top;
     }
   }
 }

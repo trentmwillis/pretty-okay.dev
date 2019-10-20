@@ -14,6 +14,11 @@
       {% endif %}
 
       <a href="{{ "/feed.xml" | prepend: site.baseurl }}" target="_blank" rel="noopener noreferrer">RSS</a>
+
+      <button id="theme-toggle" class="theme-toggle" role="switch" aria-checked="false">
+        <span class="dark-mode mode-option">{% include dark-mode.svg %}</span>
+        <span class="light-mode mode-option">{% include light-mode.svg %}</span>
+      </button>
     </div>
 
   </div>
