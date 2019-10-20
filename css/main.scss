@@ -127,7 +127,7 @@ $spacing-unit:    $size-2;
 }
 
 @mixin animated-gradient() {
-  background: linear-gradient(135deg, #e12d39, #9446ed, #e12d39, #9446ed);
+  background: linear-gradient(135deg, $color-brand, $color-accent, $color-brand, $color-accent);
   background-size: 400% 100%;
 
   -webkit-animation: GradientMove 24s linear infinite;

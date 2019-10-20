@@ -273,7 +273,7 @@ hr {
     }
 
     &:hover path {
-      fill: darken($color-brand, 15%)
+      fill: color-primary(2);
     }
   }
 }
