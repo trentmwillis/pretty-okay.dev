@@ -1,0 +1,21 @@
+<script>
+  const initialTheme = localStorage.getItem('theme');
+  if (initialTheme === 'dark') document.documentElement.classList.add('dark');
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    if (initialTheme === 'dark') themeToggle.setAttribute('aria-checked', 'true');
+    themeToggle.addEventListener('click', () => {
+      if (themeToggle.getAttribute('aria-checked') === 'true') {
+        document.documentElement.classList.remove('dark');
+        themeToggle.setAttribute('aria-checked', 'false');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        themeToggle.setAttribute('aria-checked', 'true');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+  });
+
+</script>

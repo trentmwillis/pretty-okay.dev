@@ -4,27 +4,6 @@
     }
 </script>
 
-<script>
-  const themeToggle = document.getElementById('theme-toggle');
-  const initialTheme = localStorage.getItem('theme');
-  if (initialTheme === 'dark') {
-    document.body.classList.add('dark');
-    themeToggle.setAttribute('aria-checked', 'true');
-  }
-
-  themeToggle.addEventListener('click', () => {
-    if (themeToggle.getAttribute('aria-checked') === 'true') {
-      document.body.classList.remove('dark');
-      themeToggle.setAttribute('aria-checked', 'false');
-      localStorage.setItem('theme', 'light');
-    } else {
-      document.body.classList.add('dark');
-      themeToggle.setAttribute('aria-checked', 'true');
-      localStorage.setItem('theme', 'dark');
-    }
-  });
-</script>
-
 <script src="https://cdn.jsdelivr.net/combine/npm/algoliasearch@3.26.0,npm/autocomplete.js@0.29.0/dist/autocomplete.min.js" defer></script>
 <script>
   window.addEventListener('DOMContentLoaded', () => {
