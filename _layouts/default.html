@@ -3,6 +3,8 @@
   {% include head.html %}
 
   <body>
+    {% include pre-scripts.html %}
+
     {% include header.html %}
 
     <div {% if page.image %}class="banner has-image" style="background-image:url('{{ page.image | prepend: '/assets/images/' }}')"{% else %}class="banner no-image"{% endif %}>

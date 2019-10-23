@@ -38,6 +38,4 @@
   <meta name="twitter:title" content="{{ page.title | strip_html | xml_escape }}">
   <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 | xml_escape }}{% else %}{{ site.description }}{% endif %}">
   <meta name="twitter:image" content="{%if page.image %}{{ page.image | prepend: '/assets/images/' | prepend: site.baseurl | prepend: site.url }}{% else %}{{ "/assets/site-logo.png" | prepend: site.baseurl | prepend: site.url }}{% endif %}">
-
-  {% include pre-scripts.html %}
 </head>
